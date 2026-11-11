@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Botanica &mdash; Modern Plant E-Commerce | Rahique.dev Live Demo</title>
+  <meta name="theme-color" content="#06130d" />
+
+  <!-- Matching Neon RS Monogram Browser Tab Favicon -->
+  <link
+    rel="icon"
+    type="image/svg+xml"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64' fill='none'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%2300E5FF'/%3E%3Cstop offset='50%25' stop-color='%2338BDF8'/%3E%3Cstop offset='100%25' stop-color='%23A855F7'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect x='4' y='4' width='56' height='56' rx='14' fill='%23070B14' stroke='url(%23g)' stroke-width='3'/%3E%3Cpath d='M16 45V19H25.5C29.2 19 31.5 21.2 31.5 25C31.5 28.8 29.2 31 25.5 31H16M24.5 31L31 45' stroke='url(%23g)' stroke-width='3.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M48 22.5C46.5 19.8 43.2 19 40 19.6C36.8 20.2 35.4 23.2 36.4 26C37.2 28.3 39.6 29.5 42.6 30.8C45.8 32.2 48.2 33.8 48.2 37.8C48.2 42 44.8 45 40.5 45C37.2 45 34.8 43.4 33.8 40.8' stroke='%2300E5FF' stroke-width='3.8' stroke-linecap='round'/%3E%3C/svg%3E"
+  />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Space Grotesk', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+        },
+      },
+    };
+  </script>
+  <link rel="stylesheet" href="../../styles.css" />
+  <style>
+    body {
+      background-color: #06130d !important;
+      color: #f0fdf4;
+      font-family: 'Inter', sans-serif;
+    }
+    .botanica-mesh {
+      background:
+        radial-gradient(circle at 18% 20%, rgba(16, 185, 129, 0.22) 0%, transparent 45%),
+        radial-gradient(circle at 82% 28%, rgba(110, 231, 183, 0.14) 0%, transparent 42%),
+        radial-gradient(circle at 50% 80%, rgba(5, 150, 105, 0.18) 0%, transparent 50%);
+    }
+    .botanica-glass {
+      position: relative;
+      background: rgba(12, 34, 24, 0.56);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1px solid rgba(110, 231, 183, 0.18);
+      transform-style: preserve-3d;
+      transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    .botanica-glass:hover {
+      border-color: rgba(52, 211, 153, 0.5);
+      box-shadow: 0 24px 48px -20px rgba(0, 0, 0, 0.85), 0 0 32px -10px rgba(16, 185, 129, 0.35);
+    }
+    .plant-art-wrap svg {
+      transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .botanica-glass:hover .plant-art-wrap svg {
+      transform: scale(1.08) translateY(-4px);
+    }
+  </style>
+</head>
+<body class="botanica-mesh min-h-screen antialiased selection:bg-emerald-400/30">
+  <!-- Organic Frosted Navbar -->
+  <header class="sticky top-0 z-40 border-b border-emerald-400/15 bg-[#06130d]/80 backdrop-blur-xl">
+    <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
+      <div class="flex items-center gap-4">
+        <a href="../../index.html" class="group flex items-center gap-2.5" aria-label="Back to Rahique.dev Portfolio">
+          <svg class="rs-logo-svg h-9 w-9" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <defs>
+              <linearGradient id="botanicaRsGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#00E5FF" />
+                <stop offset="50%" stop-color="#38BDF8" />
+                <stop offset="100%" stop-color="#A855F7" />
+              </linearGradient>
+            </defs>
+            <rect class="rs-logo-frame" x="4" y="4" width="56" height="56" rx="14" fill="#070B14" stroke="url(#botanicaRsGrad)" stroke-width="2.8" />
+            <path d="M16 45V19H25.5C29.2 19 31.5 21.2 31.5 25C31.5 28.8 29.2 31 25.5 31H16M24.5 31L31 45" stroke="url(#botanicaRsGrad)" stroke-width="3.8" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M48 22.5C46.5 19.8 43.2 19 40 19.6C36.8 20.2 35.4 23.2 36.4 26C37.2 28.3 39.6 29.5 42.6 30.8C45.8 32.2 48.2 33.8 48.2 37.8C48.2 42 44.8 45 40.5 45C37.2 45 34.8 43.4 33.8 40.8" stroke="#00E5FF" stroke-width="3.8" stroke-linecap="round" />
+          </svg>
+          <span class="font-display text-lg font-bold tracking-tight text-white">Rahique<span class="text-cyan-400">.dev</span></span>
+        </a>
+        <span class="hidden rounded-full border border-emerald-400/30 bg-emerald-500/15 px-3 py-1 font-mono text-[11px] text-emerald-300 sm:inline-block">Botanica Demo</span>
+      </div>
+
+      <nav class="hidden items-center gap-8 text-sm font-medium text-emerald-100/80 md:flex">
+        <a href="#collection" class="hover:text-emerald-300">Living Collection</a>
+        <a href="#care-promise" class="hover:text-emerald-300">Botanical Care</a>
+      </nav>
+
+      <button
+        id="open-cart-btn"
+        type="button"
+        class="inline-flex items-center gap-2.5 rounded-full border border-emerald-400/40 bg-emerald-500/15 px-5 py-2 text-sm font-semibold text-white backdrop-blur-md transition-all hover:bg-emerald-500/25"
+      >
+        <i class="fa-solid fa-basket-shopping text-emerald-300" aria-hidden="true"></i>
+        <span>Plant Bag</span>
+        <span id="cart-count" class="rounded-full bg-emerald-400 px-2 py-0.5 font-mono text-xs font-bold text-emerald-950">0</span>
+      </button>
+    </div>
+  </header>
+
+  <main id="top" class="relative overflow-hidden pb-28">
+    <!-- Hero Section with Botanical Frosted Backdrop -->
+    <section class="relative mx-auto max-w-7xl px-4 pb-12 pt-16 sm:px-6 lg:px-8 lg:pt-20">
+      <div class="botanica-glass overflow-hidden rounded-[2rem] p-8 sm:p-12 lg:p-14">
+        <!-- Subtle Background Botanical Monstera Silhouettes -->
+        <svg class="pointer-events-none absolute -right-10 -top-10 h-80 w-80 text-emerald-400/10" viewBox="0 0 200 200" fill="currentColor" aria-hidden="true">
+          <path d="M102 18C142 22 178 58 176 104C174 148 136 184 96 182C60 180 28 148 26 106C24 66 58 14 102 18Z" />
+        </svg>
+
+        <div class="relative z-10 max-w-3xl">
+          <span class="inline-flex items-center gap-2 rounded-full border border-emerald-300/30 bg-emerald-400/10 px-4 py-1.5 font-mono text-xs uppercase tracking-widest text-emerald-200">
+            <i class="fa-solid fa-seedling" aria-hidden="true"></i>
+            <span>Organic-Modern Greenhouse // 2026</span>
+          </span>
+          <h1 class="mt-6 font-display text-4xl font-bold leading-tight tracking-tight text-white sm:text-6xl">
+            Curated Living Sculptures for
+            <span class="bg-gradient-to-r from-emerald-300 via-teal-200 to-lime-300 bg-clip-text text-transparent">
+              Architectural Spaces
+            </span>
+          </h1>
+          <p class="mt-5 text-base leading-relaxed text-emerald-100/80 sm:text-lg">
+            Hand-acclimated rare indoor specimens paired with matte ceramic planters. Tilt any card to inspect foliage
+            profiles, filter by light conditions, and test the live sliding cart drawer.
+          </p>
+
+          <!-- Category Filter Pills -->
+          <div class="mt-8 flex flex-wrap gap-3">
+            <button type="button" data-cat="all" class="cat-btn rounded-full bg-emerald-400 px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-emerald-950 shadow-lg">
+              All Specimens
+            </button>
+            <button type="button" data-cat="rare" class="cat-btn rounded-full border border-emerald-400/30 bg-emerald-950/60 px-5 py-2.5 text-xs font-semibold uppercase tracking-wider text-emerald-100 hover:border-emerald-300">
+              Rare Variegated
+            </button>
+            <button type="button" data-cat="architectural" class="cat-btn rounded-full border border-emerald-400/30 bg-emerald-950/60 px-5 py-2.5 text-xs font-semibold uppercase tracking-wider text-emerald-100 hover:border-emerald-300">
+              Architectural
+            </button>
+            <button type="button" data-cat="low-light" class="cat-btn rounded-full border border-emerald-400/30 bg-emerald-950/60 px-5 py-2.5 text-xs font-semibold uppercase tracking-wider text-emerald-100 hover:border-emerald-300">
+              Low-Light Friendly
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive 3D-Tilt Botanical Product Grid -->
+    <section id="collection" class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+      <div id="plant-grid" class="grid gap-7 sm:grid-cols-2 lg:grid-cols-3"></div>
+    </section>
+
+    <!-- Organic Care Promise Strip -->
+    <section id="care-promise" class="mx-auto mt-10 max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="grid gap-5 sm:grid-cols-3">
+        <div class="botanica-glass rounded-2xl p-6">
+          <i class="fa-solid fa-sun text-xl text-emerald-300" aria-hidden="true"></i>
+          <h2 class="mt-3 font-display text-lg font-bold text-white">Greenhouse Acclimated</h2>
+          <p class="mt-1.5 text-sm text-emerald-100/75">Grown in organic coco-coir &amp; pumice substrate for resilient indoor roots.</p>
+        </div>
+        <div class="botanica-glass rounded-2xl p-6">
+          <i class="fa-solid fa-box-open text-xl text-teal-300" aria-hidden="true"></i>
+          <h2 class="mt-3 font-display text-lg font-bold text-white">Insulated Eco-Transit</h2>
+          <p class="mt-1.5 text-sm text-emerald-100/75">Breathable thermal sleeves keep foliage protected year-round.</p>
+        </div>
+        <div class="botanica-glass rounded-2xl p-6">
+          <i class="fa-solid fa-droplet text-xl text-lime-300" aria-hidden="true"></i>
+          <h2 class="mt-3 font-display text-lg font-bold text-white">30-Day Thrive Guarantee</h2>
+          <p class="mt-1.5 text-sm text-emerald-100/75">Dedicated botanist care guide and instant replacement assurance.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Quick-View Botanical Care Modal -->
+  <div id="qv-modal" role="dialog" aria-modal="true" aria-labelledby="qv-title" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/75 p-4 backdrop-blur-md">
+    <div class="botanica-glass w-full max-w-lg rounded-3xl p-6 sm:p-8">
+      <div class="flex items-start justify-between">
+        <div>
+          <span id="qv-tag" class="font-mono text-xs uppercase tracking-widest text-emerald-300">Specimen</span>
+          <h3 id="qv-title" class="mt-1 font-display text-2xl font-bold text-white">Plant Name</h3>
+        </div>
+        <button id="qv-close" type="button" class="text-emerald-200 hover:text-white" aria-label="Close modal">
+          <i class="fa-solid fa-xmark text-lg" aria-hidden="true"></i>
+        </button>
+      </div>
+      <p id="qv-desc" class="mt-4 text-sm leading-relaxed text-emerald-100/85"></p>
+      <div id="qv-specs" class="mt-5 grid grid-cols-2 gap-3 rounded-2xl border border-emerald-400/20 bg-emerald-950/60 p-4 font-mono text-xs text-emerald-200"></div>
+      <div class="mt-6 flex items-center justify-between border-t border-emerald-400/20 pt-5">
+        <span id="qv-price" class="font-display text-2xl font-bold text-white">$0</span>
+        <button id="qv-add" type="button" class="rounded-full bg-emerald-400 px-6 py-3 text-sm font-bold text-emerald-950 hover:bg-emerald-300">
+          Add to Plant Bag
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sliding Cart Drawer -->
+  <div id="cart-backdrop" class="fixed inset-0 z-50 hidden bg-black/70 backdrop-blur-sm">
+    <aside
+      id="cart-drawer"
+      aria-label="Shopping Bag"
+      class="ml-auto flex h-full w-full max-w-md flex-col border-l border-emerald-400/25 bg-[#081a12]/95 p-6 shadow-2xl backdrop-blur-xl"
+    >
+      <div class="flex items-center justify-between border-b border-emerald-400/20 pb-4">
+        <h2 class="font-display text-xl font-bold text-white">Your Plant Bag</h2>
+        <button id="close-cart-btn" type="button" class="text-emerald-200 hover:text-white" aria-label="Close bag">
+          <i class="fa-solid fa-xmark text-lg" aria-hidden="true"></i>
+        </button>
+      </div>
+
+      <div id="cart-items" class="flex-1 space-y-4 overflow-y-auto py-5"></div>
+
+      <div class="border-t border-emerald-400/20 pt-5">
+        <div class="flex items-center justify-between text-sm">
+          <span class="text-emerald-100/75">Subtotal (Matte Pot Included)</span>
+          <span id="cart-subtotal" class="font-display text-2xl font-bold text-white">$0.00</span>
+        </div>
+        <button id="checkout-btn" type="button" class="mt-4 w-full rounded-full bg-gradient-to-r from-emerald-400 to-teal-300 py-3.5 text-sm font-bold text-emerald-950 hover:opacity-95">
+          Complete Demo Order
+        </button>
+        <p id="checkout-msg" class="mt-3 hidden text-center font-mono text-xs text-emerald-300"></p>
+      </div>
+    </aside>
+  </div>
+
+  <!-- Floating Bottom-Left Back Pill -->
+  <a
+    href="../../index.html"
+    class="fixed bottom-5 left-5 z-50 inline-flex items-center gap-2.5 rounded-full border border-cyan-400/40 bg-[#070c18]/90 px-4 py-2.5 text-xs font-semibold text-white shadow-[0_0_24px_-4px_rgba(0,229,255,0.45)] backdrop-blur-xl transition-all hover:border-cyan-300 hover:bg-cyan-400/15 sm:text-sm"
+  >
+    <span aria-hidden="true">&larr;</span>
+    <span>Back to Rahique.dev Portfolio</span>
+  </a>
+
+  <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="../../script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const plants = [
+        {
+          id: 'monstera-thai',
+          name: 'Monstera Thai Constellation',
+          botanical: 'Monstera deliciosa',
+          category: 'rare',
+          price: 145,
+          light: 'Bright Indirect',
+          water: 'Every 7-9 days',
+          desc: 'Cream-speckled marbled fenestrations paired with a hand-thrown charcoal stone planter.',
+          gradient: 'from-emerald-900/70 via-[#0d281c] to-teal-900/60',
+          icon: 'fa-leaf',
+        },
+        {
+          id: 'fiddle-leaf',
+          name: 'Sculpted Fiddle Leaf Fig',
+          botanical: 'Ficus lyrata',
+          category: 'architectural',
+          price: 120,
+          light: 'Bright Filtered',
+          water: 'Every 8-10 days',
+          desc: 'Architectural broad violin leaves bringing vertical organic drama to sunlit minimalist rooms.',
+          gradient: 'from-teal-900/70 via-[#0c261c] to-emerald-950/80',
+          icon: 'fa-tree',
+        },
+        {
+          id: 'zz-raven',
+          name: 'Black Raven ZZ Specimen',
+          botanical: 'Zamioculcas zamiifolia',
+          category: 'low-light',
+          price: 78,
+          light: 'Low to Medium',
+          water: 'Every 14-18 days',
+          desc: 'Glossy obsidian foliage emerging lime-green before maturing into deep midnight emerald.',
+          gradient: 'from-emerald-950/90 via-[#0b2319] to-slate-900/80',
+          icon: 'fa-seedling',
+        },
+        {
+          id: 'alocasia-frydek',
+          name: 'Velvet Frydek Alocasia',
+          botanical: 'Alocasia micholitziana',
+          category: 'rare',
+          price: 94,
+          light: 'Bright Indirect',
+          water: 'Keep lightly moist',
+          desc: 'Deep forest-velvet arrowheads crossed with luminous ivory veins in a terracotta cylinder.',
+          gradient: 'from-lime-950/60 via-[#0e2a1e] to-emerald-900/70',
+          icon: 'fa-spa',
+        },
+        {
+          id: 'snake-moonshine',
+          name: 'Moonshine Sansevieria',
+          botanical: 'Dracaena trifasciata',
+          category: 'low-light',
+          price: 68,
+          light: 'Low to Bright',
+          water: 'Every 14-21 days',
+          desc: 'Silvery sage upright blades engineered for effortless air purification in modern studios.',
+          gradient: 'from-emerald-900/60 via-[#102b22] to-teal-950/80',
+          icon: 'fa-pagelines',
+        },
+        {
+          id: 'olive-tree',
+          name: 'Mediterranean Olive Tree',
+          botanical: 'Olea europaea',
+          category: 'architectural',
+          price: 165,
+          light: 'Full Sun / Patio',
+          water: 'Every 7-10 days',
+          desc: 'Silver-sage canopy atop a slender sculpted trunk, curated for bright architectural corners.',
+          gradient: 'from-teal-950/75 via-[#0e281d] to-lime-950/60',
+          icon: 'fa-clover',
+        },
+      ];
+
+      const grid = document.getElementById('plant-grid');
+      const cart = new Map();
+      let activeCat = 'all';
+      let currentQV = null;
+
+      const bindCardTilt = (card) => {
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        card.addEventListener('mousemove', (e) => {
+          const r = card.getBoundingClientRect();
+          const rx = ((e.clientY - r.top) / r.height - 0.5) * -10;
+          const ry = ((e.clientX - r.left) / r.width - 0.5) * 10;
+          card.style.transform = `perspective(950px) rotateX(${rx.toFixed(2)}deg) rotateY(${ry.toFixed(2)}deg) translateY(-4px)`;
+        });
+        card.addEventListener('mouseleave', () => {
+          card.style.transform = 'perspective(950px) rotateX(0deg) rotateY(0deg) translateY(0)';
+        });
+      };
+
+      const renderPlants = () => {
+        const list = activeCat === 'all' ? plants : plants.filter((p) => p.category === activeCat);
+        grid.innerHTML = '';
+
+        list.forEach((p) => {
+          const card = document.createElement('article');
+          card.className = 'botanica-glass flex flex-col overflow-hidden rounded-3xl p-5';
+          card.innerHTML = `
+            <div class="plant-art-wrap relative flex h-48 items-center justify-center overflow-hidden rounded-2xl bg-gradient-to-br ${p.gradient}">
+              <svg class="h-28 w-28 text-emerald-300/85 drop-shadow-[0_10px_24px_rgba(16,185,129,0.45)]" viewBox="0 0 120 120" fill="none" aria-hidden="true">
+                <path d="M60 104C60 72 60 44 60 22" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/>
+                <path d="M60 46C34 42 22 24 24 14C42 14 58 26 60 46Z" fill="currentColor" fill-opacity="0.35" stroke="currentColor" stroke-width="2.5"/>
+                <path d="M60 62C88 58 98 38 96 26C78 26 62 40 60 62Z" fill="currentColor" fill-opacity="0.55" stroke="currentColor" stroke-width="2.5"/>
+                <path d="M60 78C36 74 26 58 28 48C44 48 58 60 60 78Z" fill="currentColor" fill-opacity="0.25" stroke="currentColor" stroke-width="2.5"/>
+              </svg>
+              <span class="absolute left-3 top-3 rounded-full border border-emerald-300/30 bg-[#06130d]/70 px-3 py-1 font-mono text-[10px] uppercase tracking-wider text-emerald-200 backdrop-blur-md">
+                ${p.category}
+              </span>
+            </div>
+
+            <div class="mt-5 flex items-start justify-between gap-3">
+              <div>
+                <h2 class="font-display text-xl font-bold text-white">${p.name}</h2>
+                <p class="font-mono text-xs italic text-emerald-300/80">${p.botanical}</p>
+              </div>
+              <span class="font-display text-xl font-bold text-emerald-300">$${p.price}</span>
+            </div>
+
+            <p class="mt-3 flex-1 text-sm leading-relaxed text-emerald-100/75">${p.desc}</p>
+
+            <div class="mt-5 flex gap-3">
+              <button type="button" data-qv="${p.id}" class="flex-1 rounded-full border border-emerald-400/30 bg-emerald-950/60 py-2.5 text-xs font-semibold text-emerald-100 hover:border-emerald-300">
+                Care &amp; Details
+              </button>
+              <button type="button" data-add="${p.id}" class="flex-1 rounded-full bg-emerald-400 py-2.5 text-xs font-bold text-emerald-950 hover:bg-emerald-300">
+                Add to Bag
+              </button>
+            </div>
+          `;
+          bindCardTilt(card);
+          grid.appendChild(card);
+        });
+      };
+
+      const renderCart = () => {
+        const itemsEl = document.getElementById('cart-items');
+        const countEl = document.getElementById('cart-count');
+        const subtotalEl = document.getElementById('cart-subtotal');
+
+        let totalQty = 0;
+        let subtotal = 0;
+        itemsEl.innerHTML = '';
+
+        if (cart.size === 0) {
+          itemsEl.innerHTML = '<p class="py-12 text-center text-sm text-emerald-200/70">Your plant bag is currently empty.</p>';
+        } else {
+          cart.forEach((qty, id) => {
+            const p = plants.find((item) => item.id === id);
+            if (!p) return;
+            totalQty += qty;
+            subtotal += p.price * qty;
+            const row = document.createElement('div');
+            row.className = 'flex items-center justify-between rounded-2xl border border-emerald-400/20 bg-emerald-950/60 p-4';
+            row.innerHTML = `
+              <div>
+                <p class="font-display text-sm font-bold text-white">${p.name}</p>
+                <p class="font-mono text-xs text-emerald-300">$${p.price} &times; ${qty}</p>
+              </div>
+              <div class="flex items-center gap-2">
+                <button type="button" data-dec="${id}" class="h-7 w-7 rounded-full border border-emerald-400/30 text-xs text-white">-</button>
+                <button type="button" data-inc="${id}" class="h-7 w-7 rounded-full border border-emerald-400/30 text-xs text-white">+</button>
+                <button type="button" data-rem="${id}" class="ml-1 text-xs text-rose-400" aria-label="Remove"><i class="fa-solid fa-trash"></i></button>
+              </div>
+            `;
+            itemsEl.appendChild(row);
+          });
+        }
+
+        countEl.textContent = String(totalQty);
+        subtotalEl.textContent = `$${subtotal.toFixed(2)}`;
+      };
+
+      const addToCart = (id) => {
+        cart.set(id, (cart.get(id) || 0) + 1);
+        renderCart();
+      };
+
+      document.querySelectorAll('.cat-btn').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          activeCat = btn.dataset.cat;
+          document.querySelectorAll('.cat-btn').forEach((b) => {
+            b.className = b === btn
+              ? 'cat-btn rounded-full bg-emerald-400 px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-emerald-950 shadow-lg'
+              : 'cat-btn rounded-full border border-emerald-400/30 bg-emerald-950/60 px-5 py-2.5 text-xs font-semibold uppercase tracking-wider text-emerald-100 hover:border-emerald-300';
+          });
+          renderPlants();
+        });
+      });
+
+      grid.addEventListener('click', (e) => {
+        const addBtn = e.target.closest('[data-add]');
+        const qvBtn = e.target.closest('[data-qv]');
+        if (addBtn) {
+          addToCart(addBtn.dataset.add);
+          document.getElementById('cart-backdrop').classList.remove('hidden');
+        }
+        if (qvBtn) {
+          currentQV = plants.find((p) => p.id === qvBtn.dataset.qv);
+          if (!currentQV) return;
+          document.getElementById('qv-tag').textContent = currentQV.botanical;
+          document.getElementById('qv-title').textContent = currentQV.name;
+          document.getElementById('qv-desc').textContent = currentQV.desc;
+          document.getElementById('qv-price').textContent = `$${currentQV.price}`;
+          document.getElementById('qv-specs').innerHTML = `
+            <div><span class="text-emerald-400/75">LIGHT:</span> ${currentQV.light}</div>
+            <div><span class="text-emerald-400/75">WATER:</span> ${currentQV.water}</div>
+          `;
+          const m = document.getElementById('qv-modal');
+          m.classList.remove('hidden');
+          m.classList.add('flex');
+        }
+      });
+
+      document.getElementById('qv-close').addEventListener('click', () => {
+        const m = document.getElementById('qv-modal');
+        m.classList.add('hidden');
+        m.classList.remove('flex');
+      });
+
+      document.getElementById('qv-add').addEventListener('click', () => {
+        if (currentQV) addToCart(currentQV.id);
+        const m = document.getElementById('qv-modal');
+        m.classList.add('hidden');
+        m.classList.remove('flex');
+        document.getElementById('cart-backdrop').classList.remove('hidden');
+      });
+
+      document.getElementById('open-cart-btn').addEventListener('click', () => {
+        document.getElementById('cart-backdrop').classList.remove('hidden');
+      });
+      document.getElementById('close-cart-btn').addEventListener('click', () => {
+        document.getElementById('cart-backdrop').classList.add('hidden');
+      });
+      document.getElementById('cart-backdrop').addEventListener('click', (e) => {
+        if (e.target.id === 'cart-backdrop') e.target.classList.add('hidden');
+      });
+
+      document.getElementById('cart-items').addEventListener('click', (e) => {
+        const inc = e.target.closest('[data-inc]');
+        const dec = e.target.closest('[data-dec]');
+        const rem = e.target.closest('[data-rem]');
+        if (inc) cart.set(inc.dataset.inc, (cart.get(inc.dataset.inc) || 0) + 1);
+        if (dec) {
+          const cur = cart.get(dec.dataset.dec) || 0;
+          if (cur <= 1) cart.delete(dec.dataset.dec);
+          else cart.set(dec.dataset.dec, cur - 1);
+        }
+        if (rem) cart.delete(rem.dataset.rem);
+        renderCart();
+      });
+
+      document.getElementById('checkout-btn').addEventListener('click', () => {
+        const msg = document.getElementById('checkout-msg');
+        msg.classList.remove('hidden');
+        if (cart.size === 0) {
+          msg.textContent = 'Add a specimen to test the checkout flow.';
+          return;
+        }
+        cart.clear();
+        renderCart();
+        msg.textContent = 'Greenhouse demo order reserved! Thank you for exploring Botanica.';
+      });
+
+      renderPlants();
+      renderCart();
+    });
+  </script>
+</body>
+</html>
+

@@ -1,0 +1,490 @@
+/* ==========================================================================
+   Rahique.dev — Elite Motion UI & Portfolio Design System
+   Deep Obsidian Surfaces + Electric Cyan & Cyber Purple Motion System
+   ========================================================================== */
+
+:root {
+  --bg-primary: #04060c;
+  --bg-elevated: #0a0f1c;
+  --surface-glass: rgba(11, 17, 31, 0.68);
+  --border-subtle: rgba(148, 163, 184, 0.14);
+  --neon-cyan: #00e5ff;
+  --cyber-purple: #a855f7;
+  --electric-indigo: #6366f1;
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+}
+
+/* Lenis Smooth Scroll Base */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+html {
+  background-color: var(--bg-primary);
+  color: var(--text-main);
+  scroll-padding-top: 5.5rem;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-main);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, .font-display {
+  font-family: 'Space Grotesk', 'Inter', sans-serif;
+}
+
+.font-mono-code {
+  font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+/* Custom Selection & Scrollbar */
+::selection {
+  background: rgba(0, 229, 255, 0.3);
+  color: #ffffff;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #04060c;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, rgba(0, 229, 255, 0.5), rgba(168, 85, 247, 0.5));
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, rgba(0, 229, 255, 0.85), rgba(168, 85, 247, 0.85));
+}
+
+/* Skip Navigation */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  z-index: 120;
+  padding: 0.65rem 1.1rem;
+  background: var(--neon-cyan);
+  color: #04060c;
+  font-weight: 700;
+  border-radius: 0.5rem;
+  transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+/* --------------------------------------------------------------------------
+   Custom Dual-Ring Magnetic Cursor (Desktop Fine Pointer Only)
+   -------------------------------------------------------------------------- */
+@media (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  body.has-custom-cursor,
+  body.has-custom-cursor a,
+  body.has-custom-cursor button {
+    cursor: none !important;
+  }
+}
+
+.cursor-dot,
+.cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.cursor-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 9999px;
+  background: #00e5ff;
+  box-shadow: 0 0 14px rgba(0, 229, 255, 0.9), 0 0 28px rgba(168, 85, 247, 0.6);
+  transition: width 0.2s ease, height 0.2s ease, background-color 0.2s ease, opacity 0.25s ease;
+}
+
+.cursor-ring {
+  width: 38px;
+  height: 38px;
+  border-radius: 9999px;
+  border: 1.5px solid rgba(0, 229, 255, 0.55);
+  background: radial-gradient(circle, rgba(0, 229, 255, 0.1) 0%, rgba(168, 85, 247, 0.04) 65%, transparent 100%);
+  box-shadow: 0 0 24px -4px rgba(0, 229, 255, 0.35);
+  transition: width 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+              height 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+              border-color 0.25s ease,
+              background 0.25s ease,
+              opacity 0.25s ease;
+}
+
+.cursor-ring.is-hovering {
+  width: 58px;
+  height: 58px;
+  border-color: rgba(168, 85, 247, 0.85);
+  background: radial-gradient(circle, rgba(0, 229, 255, 0.16) 0%, rgba(168, 85, 247, 0.14) 70%, transparent 100%);
+}
+
+.cursor-dot.is-hovering {
+  width: 10px;
+  height: 10px;
+  background: #ffffff;
+}
+
+.cursor-ring.is-card-hover {
+  width: 72px;
+  height: 72px;
+  border-color: rgba(0, 229, 255, 0.75);
+}
+
+/* --------------------------------------------------------------------------
+   Bespoke RS Monogram SVG Animation
+   -------------------------------------------------------------------------- */
+.rs-logo-svg {
+  filter: drop-shadow(0 0 10px rgba(0, 229, 255, 0.4));
+  transition: filter 0.35s ease, transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.group:hover .rs-logo-svg {
+  filter: drop-shadow(0 0 16px rgba(0, 229, 255, 0.75)) drop-shadow(0 0 24px rgba(168, 85, 247, 0.5));
+  transform: scale(1.06);
+}
+
+.rs-logo-frame {
+  stroke-dasharray: 220;
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 0.7s ease;
+}
+
+.group:hover .rs-logo-frame {
+  animation: rs-frame-pulse 1.4s ease forwards;
+}
+
+@keyframes rs-frame-pulse {
+  0% {
+    stroke-dashoffset: 220;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Navbar Glass & Active Indicator
+   -------------------------------------------------------------------------- */
+.navbar-glass {
+  background: rgba(4, 6, 12, 0.48);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(148, 163, 184, 0.08);
+  transition: background-color 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+}
+
+.navbar-glass.is-scrolled {
+  background: rgba(4, 6, 12, 0.88);
+  border-bottom-color: rgba(0, 229, 255, 0.22);
+  box-shadow: 0 16px 40px -14px rgba(0, 0, 0, 0.85);
+}
+
+.nav-link {
+  position: relative;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #00e5ff, #a855f7);
+  border-radius: 9999px;
+  transition: width 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.nav-link:hover::after,
+.nav-link.is-active::after {
+  width: 100%;
+}
+
+/* --------------------------------------------------------------------------
+   Cyber Grid, Aurora Mesh & Gradient Text
+   -------------------------------------------------------------------------- */
+.cyber-grid-bg {
+  background-image:
+    linear-gradient(to right, rgba(0, 229, 255, 0.055) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(168, 85, 247, 0.055) 1px, transparent 1px);
+  background-size: 54px 54px;
+  mask-image: radial-gradient(ellipse 85% 75% at 50% 35%, #000 40%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 85% 75% at 50% 35%, #000 40%, transparent 100%);
+}
+
+.ambient-orb {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(110px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.text-gradient-cyber {
+  background: linear-gradient(120deg, #ffffff 0%, #00e5ff 44%, #a855f7 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* --------------------------------------------------------------------------
+   3D Tilt Glass Cards with Dynamic Spotlight Tracking
+   -------------------------------------------------------------------------- */
+.glass-card {
+  position: relative;
+  background: var(--surface-glass);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid var(--border-subtle);
+  transform-style: preserve-3d;
+  will-change: transform;
+  transition: border-color 0.35s ease, box-shadow 0.35s ease, transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.tilt-card {
+  --mouse-x: 50%;
+  --mouse-y: 50%;
+  overflow: hidden;
+}
+
+.tilt-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    420px circle at var(--mouse-x) var(--mouse-y),
+    rgba(0, 229, 255, 0.16),
+    rgba(168, 85, 247, 0.07) 40%,
+    transparent 72%
+  );
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+  z-index: 1;
+}
+
+.tilt-card:hover::before {
+  opacity: 1;
+}
+
+.tilt-card:hover {
+  border-color: rgba(0, 229, 255, 0.42);
+  box-shadow:
+    0 24px 48px -20px rgba(0, 0, 0, 0.9),
+    0 0 34px -10px rgba(0, 229, 255, 0.25);
+}
+
+.tilt-card > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* --------------------------------------------------------------------------
+   Magnetic Buttons with Animated Shimmer Border
+   -------------------------------------------------------------------------- */
+.magnetic-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  will-change: transform;
+  transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.3s ease,
+              border-color 0.3s ease,
+              background-position 0.45s ease;
+}
+
+.magnetic-btn::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -65%;
+  width: 45%;
+  height: 200%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.28),
+    transparent
+  );
+  transform: rotate(22deg);
+  transition: left 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
+}
+
+.magnetic-btn:hover::after {
+  left: 130%;
+}
+
+.btn-neon-primary {
+  background: linear-gradient(135deg, #00e5ff 0%, #3b82f6 50%, #9333ea 100%);
+  background-size: 180% 180%;
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 0 26px -6px rgba(0, 229, 255, 0.6);
+}
+
+.btn-neon-primary:hover {
+  background-position: 100% 50%;
+  box-shadow: 0 0 36px -4px rgba(0, 229, 255, 0.78), 0 0 22px -4px rgba(168, 85, 247, 0.55);
+}
+
+.btn-cyber-ghost {
+  background: rgba(15, 23, 42, 0.68);
+  border: 1px solid rgba(148, 163, 184, 0.28);
+}
+
+.btn-cyber-ghost:hover {
+  background: rgba(0, 229, 255, 0.09);
+  border-color: rgba(0, 229, 255, 0.62);
+  box-shadow: 0 0 24px -6px rgba(0, 229, 255, 0.42);
+}
+
+/* --------------------------------------------------------------------------
+   Horizontal Kinetic Marquee Ticker
+   -------------------------------------------------------------------------- */
+.marquee-viewport {
+  overflow: hidden;
+  mask-image: linear-gradient(90deg, transparent 0%, #000 10%, #000 90%, transparent 100%);
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 10%, #000 90%, transparent 100%);
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  gap: 2.5rem;
+  animation: marquee-scroll 30s linear infinite;
+}
+
+.marquee-viewport:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+@keyframes marquee-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Project Card Media Hover Zoom & Status Pulse
+   -------------------------------------------------------------------------- */
+.project-media-wrapper .project-mockup {
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.project-card:hover .project-media-wrapper .project-mockup {
+  transform: scale(1.05);
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(0, 229, 255, 0.65);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 8px rgba(0, 229, 255, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(0, 229, 255, 0);
+  }
+}
+
+.status-dot {
+  animation: pulse-ring 2.2s infinite;
+}
+
+/* Modal Backdrop */
+.modal-backdrop {
+  background: rgba(3, 5, 10, 0.84);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Glowing Success Icon Ring */
+@keyframes success-pop {
+  0% {
+    transform: scale(0.65);
+    opacity: 0;
+  }
+  70% {
+    transform: scale(1.08);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.success-pop-anim {
+  animation: success-pop 0.45s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* Focus-visible accessibility */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--neon-cyan);
+  outline-offset: 2px;
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .status-dot,
+  .marquee-track,
+  .rs-logo-frame {
+    animation: none !important;
+  }
+
+  .cursor-dot,
+  .cursor-ring {
+    display: none !important;
+  }
+
+  .glass-card,
+  .magnetic-btn,
+  .project-media-wrapper .project-mockup {
+    transition: none;
+  }
+}

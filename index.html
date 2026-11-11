@@ -1,0 +1,1142 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Md. Rahique Shahrier &mdash; Custom Web Developer, AI Automation &amp; Motion UI Specialist</title>
+  <meta
+    name="description"
+    content="Portfolio of Md. Rahique Shahrier (Rahique.dev) — Custom Full-Stack Web Design, AI Automation Prompt Engineering, Interactive Motion UI & GSAP Animations, Node.js Architecture, Web3 & SaaS Dashboards, and Automated Web Workflows."
+  />
+  <meta name="theme-color" content="#04060c" />
+
+  <!-- Matching Neon RS Monogram Browser Tab Favicon -->
+  <link
+    rel="icon"
+    type="image/svg+xml"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64' fill='none'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%2300E5FF'/%3E%3Cstop offset='50%25' stop-color='%2338BDF8'/%3E%3Cstop offset='100%25' stop-color='%23A855F7'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect x='4' y='4' width='56' height='56' rx='14' fill='%23070B14' stroke='url(%23g)' stroke-width='3'/%3E%3Cpath d='M16 45V19H25.5C29.2 19 31.5 21.2 31.5 25C31.5 28.8 29.2 31 25.5 31H16M24.5 31L31 45' stroke='url(%23g)' stroke-width='3.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M48 22.5C46.5 19.8 43.2 19 40 19.6C36.8 20.2 35.4 23.2 36.4 26C37.2 28.3 39.6 29.5 42.6 30.8C45.8 32.2 48.2 33.8 48.2 37.8C48.2 42 44.8 45 40.5 45C37.2 45 34.8 43.4 33.8 40.8' stroke='%2300E5FF' stroke-width='3.8' stroke-linecap='round'/%3E%3C/svg%3E"
+  />
+
+  <!-- Open Graph Metadata -->
+  <meta property="og:title" content="Md. Rahique Shahrier — Custom Web Developer, AI Automation &amp; Motion UI Architect" />
+  <meta
+    property="og:description"
+    content="Bespoke architectures, interactive GSAP motion UIs, AI automation workflows, Web3 & SaaS dashboards, and Node.js systems."
+  />
+  <meta property="og:type" content="website" />
+
+  <!-- Google Fonts: Space Grotesk, Inter, JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- FontAwesome 6 Icons CDN -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            cyber: {
+              bg: '#04060c',
+              surface: '#0a0f1c',
+              card: '#0f1628',
+              cyan: '#00e5ff',
+              purple: '#a855f7',
+              indigo: '#6366f1',
+            },
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Space Grotesk', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+        },
+      },
+    };
+  </script>
+
+  <!-- Global Custom Stylesheet (Relative Path) -->
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body class="bg-cyber-bg text-slate-100 antialiased selection:bg-cyan-400/30">
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- =====================================================================
+       1. HEADER / STICKY GLASSMORPHIC NAVBAR
+       ===================================================================== -->
+  <header id="site-header" class="navbar-glass fixed inset-x-0 top-0 z-50">
+    <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-3.5 sm:px-6 lg:px-8">
+      <!-- Bespoke Glowing SVG RS Monogram Logo -->
+      <a
+        href="./index.html"
+        class="group flex items-center gap-3 text-lg font-bold tracking-tight text-white"
+        aria-label="Rahique.dev Home"
+      >
+        <svg
+          class="rs-logo-svg h-10 w-10"
+          viewBox="0 0 64 64"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true"
+        >
+          <defs>
+            <linearGradient id="navRsGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#00E5FF" />
+              <stop offset="50%" stop-color="#38BDF8" />
+              <stop offset="100%" stop-color="#A855F7" />
+            </linearGradient>
+          </defs>
+          <rect
+            class="rs-logo-frame"
+            x="4"
+            y="4"
+            width="56"
+            height="56"
+            rx="14"
+            fill="#070B14"
+            stroke="url(#navRsGrad)"
+            stroke-width="2.8"
+          />
+          <path
+            d="M16 45V19H25.5C29.2 19 31.5 21.2 31.5 25C31.5 28.8 29.2 31 25.5 31H16M24.5 31L31 45"
+            stroke="url(#navRsGrad)"
+            stroke-width="3.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M48 22.5C46.5 19.8 43.2 19 40 19.6C36.8 20.2 35.4 23.2 36.4 26C37.2 28.3 39.6 29.5 42.6 30.8C45.8 32.2 48.2 33.8 48.2 37.8C48.2 42 44.8 45 40.5 45C37.2 45 34.8 43.4 33.8 40.8"
+            stroke="#00E5FF"
+            stroke-width="3.8"
+            stroke-linecap="round"
+          />
+        </svg>
+        <span class="font-display text-xl tracking-tight">
+          Rahique<span class="text-cyan-400">.dev</span>
+        </span>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav aria-label="Primary Navigation" class="hidden items-center gap-8 md:flex">
+        <a href="#about" class="nav-link text-sm font-medium text-slate-300 transition-colors hover:text-white">
+          About
+        </a>
+        <a href="#skills" class="nav-link text-sm font-medium text-slate-300 transition-colors hover:text-white">
+          Skills
+        </a>
+        <a href="#projects" class="nav-link text-sm font-medium text-slate-300 transition-colors hover:text-white">
+          Projects
+        </a>
+        <a href="./Projects/index.html" class="nav-link text-sm font-medium text-cyan-300 transition-colors hover:text-white">
+          All Demos
+        </a>
+        <a href="#contact" class="nav-link text-sm font-medium text-slate-300 transition-colors hover:text-white">
+          Contact
+        </a>
+      </nav>
+
+      <!-- Desktop CTA + Mobile Toggle -->
+      <div class="flex items-center gap-3">
+        <a
+          href="#contact"
+          class="magnetic-btn btn-neon-primary hidden gap-2 rounded-xl px-5 py-2.5 text-sm font-bold tracking-wide md:inline-flex"
+        >
+          <span>Hire Me</span>
+          <i class="fa-solid fa-arrow-right text-xs" aria-hidden="true"></i>
+        </a>
+
+        <button
+          id="mobile-menu-btn"
+          type="button"
+          class="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-slate-700/70 bg-slate-900/70 text-slate-200 transition-colors hover:border-cyan-400/50 hover:text-cyan-300 md:hidden"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+          aria-label="Toggle navigation menu"
+        >
+          <i id="mobile-menu-icon" class="fa-solid fa-bars text-base" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div
+      id="mobile-menu"
+      class="hidden border-t border-slate-800/80 bg-[#060913]/95 px-4 pb-5 pt-3 backdrop-blur-xl md:hidden"
+    >
+      <nav aria-label="Mobile Navigation" class="flex flex-col space-y-2">
+        <a href="#about" class="mobile-nav-link rounded-lg px-3 py-2.5 text-sm font-medium text-slate-200 hover:bg-slate-800/60 hover:text-cyan-300">
+          About
+        </a>
+        <a href="#skills" class="mobile-nav-link rounded-lg px-3 py-2.5 text-sm font-medium text-slate-200 hover:bg-slate-800/60 hover:text-cyan-300">
+          Skills
+        </a>
+        <a href="#projects" class="mobile-nav-link rounded-lg px-3 py-2.5 text-sm font-medium text-slate-200 hover:bg-slate-800/60 hover:text-cyan-300">
+          Projects
+        </a>
+        <a href="./Projects/index.html" class="mobile-nav-link rounded-lg px-3 py-2.5 text-sm font-medium text-cyan-300 hover:bg-slate-800/60">
+          All Demos
+        </a>
+        <a href="#contact" class="mobile-nav-link rounded-lg px-3 py-2.5 text-sm font-medium text-slate-200 hover:bg-slate-800/60 hover:text-cyan-300">
+          Contact
+        </a>
+        <a href="#contact" class="mobile-nav-link btn-neon-primary mt-2 inline-flex items-center justify-center gap-2 rounded-lg px-5 py-2.5 text-sm font-bold">
+          <span>Hire Me</span>
+          <i class="fa-solid fa-bolt text-xs" aria-hidden="true"></i>
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <!-- ===================================================================
+         2. HERO SECTION
+         =================================================================== -->
+    <section
+      id="hero"
+      class="relative flex min-h-screen items-center overflow-hidden pb-16 pt-28 sm:pt-32"
+    >
+      <div class="cyber-grid-bg pointer-events-none absolute inset-0 z-0" aria-hidden="true"></div>
+      <canvas
+        id="hero-particles"
+        class="pointer-events-none absolute inset-0 z-0 h-full w-full"
+        aria-hidden="true"
+      ></canvas>
+
+      <div class="ambient-orb -left-28 top-1/4 h-80 w-80 bg-cyan-500/20 sm:h-[26rem] sm:w-[26rem]" aria-hidden="true"></div>
+      <div class="ambient-orb -right-28 bottom-10 h-80 w-80 bg-purple-600/20 sm:h-[26rem] sm:w-[26rem]" aria-hidden="true"></div>
+
+      <div class="relative z-10 mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="grid items-center gap-12 lg:grid-cols-12 lg:gap-10">
+          <!-- Hero Left Column -->
+          <div class="lg:col-span-7">
+            <div
+              class="hero-stagger mb-6 inline-flex items-center gap-2.5 rounded-full border border-cyan-400/25 bg-slate-900/75 px-4 py-1.5 text-xs font-medium text-cyan-300 backdrop-blur-md sm:text-sm"
+            >
+              <span class="status-dot h-2 w-2 rounded-full bg-cyan-400" aria-hidden="true"></span>
+              <span>Available for Custom Web, AI Automation &amp; Motion UI Projects</span>
+            </div>
+
+            <p class="hero-stagger mb-3 font-mono text-sm font-medium uppercase tracking-[0.22em] text-purple-300 sm:text-base">
+              Md. Rahique Shahrier
+            </p>
+
+            <h1 class="hero-stagger font-display text-4xl font-bold leading-[1.08] tracking-tight text-white sm:text-5xl lg:text-6xl">
+              <span class="text-gradient-cyber">Custom Web Developer,</span>
+              <span class="block text-slate-100">AI Automation &amp; Motion UI Specialist</span>
+            </h1>
+
+            <p class="hero-stagger mt-6 max-w-2xl text-base leading-relaxed text-slate-300 sm:text-lg lg:text-xl">
+              I engineer bespoke full-stack applications, deterministic AI automation workflows, automated video
+              pipelines, and high-converting modern UIs powered by GSAP motion and Node.js.
+            </p>
+
+            <!-- Magnetic CTA Buttons -->
+            <div class="hero-stagger mt-9 flex flex-wrap items-center gap-4">
+              <a
+                href="#projects"
+                class="magnetic-btn btn-neon-primary gap-2.5 rounded-xl px-7 py-3.5 text-sm font-bold tracking-wide sm:text-base"
+              >
+                <span>View Featured Work</span>
+                <i class="fa-solid fa-arrow-down text-xs" aria-hidden="true"></i>
+              </a>
+
+              <a
+                href="https://laborx.com/freelancers/users/id479119"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="magnetic-btn btn-cyber-ghost gap-2.5 rounded-xl px-6 py-3.5 text-sm font-semibold text-cyan-300 sm:text-base"
+              >
+                <i class="fa-solid fa-briefcase text-sm" aria-hidden="true"></i>
+                <span>Hire Me on LaborX</span>
+              </a>
+            </div>
+
+            <!-- Quick Capabilities Strip -->
+            <div class="hero-stagger mt-10 flex flex-wrap items-center gap-x-7 gap-y-3 border-t border-slate-800/80 pt-6 text-xs text-slate-400 sm:text-sm">
+              <div class="flex items-center gap-2">
+                <i class="fa-solid fa-brain text-cyan-400" aria-hidden="true"></i>
+                <span>AI Automation Prompting</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <i class="fa-solid fa-bezier-curve text-purple-400" aria-hidden="true"></i>
+                <span>GSAP &amp; Lenis Motion UI</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <i class="fa-brands fa-node-js text-emerald-400" aria-hidden="true"></i>
+                <span>Node.js Architecture</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hero Right Column: 3D Tilt Interactive Architecture Card -->
+          <div class="hero-stagger lg:col-span-5">
+            <div class="glass-card tilt-card rounded-2xl border border-cyan-400/25 p-1 shadow-2xl">
+              <div class="rounded-xl bg-[#060a14]/95 p-5 sm:p-6">
+                <div class="mb-4 flex items-center justify-between border-b border-slate-800/80 pb-3">
+                  <div class="flex items-center gap-2">
+                    <span class="h-3 w-3 rounded-full bg-rose-500/80"></span>
+                    <span class="h-3 w-3 rounded-full bg-amber-400/80"></span>
+                    <span class="h-3 w-3 rounded-full bg-emerald-400/80"></span>
+                    <span class="ml-2 font-mono text-xs text-slate-400">rahique.architect.js</span>
+                  </div>
+                  <span class="rounded-md border border-cyan-400/30 bg-cyan-400/10 px-2 py-0.5 font-mono text-[11px] text-cyan-300">
+                    60 FPS MOTION
+                  </span>
+                </div>
+
+                <pre class="overflow-x-auto font-mono text-xs leading-relaxed text-slate-300 sm:text-[13px]"><code><span class="text-purple-400">const</span> <span class="text-cyan-300">architect</span> = {
+  <span class="text-slate-400">name:</span> <span class="text-emerald-300">'Md. Rahique Shahrier'</span>,
+  <span class="text-slate-400">brand:</span> <span class="text-emerald-300">'Rahique.dev'</span>,
+  <span class="text-slate-400">stack:</span> [
+    <span class="text-amber-300">'AI Automation Systems'</span>,
+    <span class="text-amber-300">'GSAP Motion UI'</span>,
+    <span class="text-amber-300">'Node.js Architecture'</span>
+  ]
+};
+
+<span class="text-purple-400">export async function</span> <span class="text-cyan-300">shipProduct</span>(<span class="text-amber-200">goal</span>) {
+  <span class="text-purple-400">return</span> <span class="text-cyan-300">composeMotionUI</span>(<span class="text-purple-400">await</span> <span class="text-cyan-300">automateCore</span>(goal));
+}</code></pre>
+
+                <!-- Animated Telemetry Counters -->
+                <div class="mt-5 grid grid-cols-3 gap-3 border-t border-slate-800/80 pt-4 text-center">
+                  <div class="rounded-lg bg-slate-900/85 px-2 py-2.5">
+                    <p class="font-display text-lg font-bold text-cyan-300" data-count-to="100" data-count-suffix="%">100%</p>
+                    <p class="text-[11px] text-slate-400">Custom Coded</p>
+                  </div>
+                  <div class="rounded-lg bg-slate-900/85 px-2 py-2.5">
+                    <p class="font-display text-lg font-bold text-purple-300" data-count-to="4" data-count-suffix="+">4+</p>
+                    <p class="text-[11px] text-slate-400">Live Demo Apps</p>
+                  </div>
+                  <div class="rounded-lg bg-slate-900/85 px-2 py-2.5">
+                    <p class="font-display text-lg font-bold text-emerald-300" data-count-to="99.9" data-count-decimals="1" data-count-suffix="%">99.9%</p>
+                    <p class="text-[11px] text-slate-400">Workflow Uptime</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         HORIZONTAL KINETIC MARQUEE TICKER
+         =================================================================== -->
+    <div class="border-y border-slate-800/80 bg-[#070b15]/80 py-4" aria-hidden="true">
+      <div class="marquee-viewport">
+        <div class="marquee-track font-mono text-xs uppercase tracking-[0.22em] text-slate-300 sm:text-sm">
+          <span class="flex items-center gap-3"><span class="h-1.5 w-1.5 rounded-full bg-cyan-400"></span>AI Automation Prompt Engineering</span>
+          <span class="flex items-center gap-3"><span class="h-1.5 w-1.5 rounded-full bg-purple-400"></span>Interactive Motion UI &amp; GSAP Animations</span>
+          <span class="flex items-center gap-3"><span class="h-1.5 w-1.5 rounded-full bg-cyan-400"></span>Custom Full-Stack Web Design</span>
+          <span class="flex items-center gap-3"><span class="h-1.5 w-1.5 rounded-full bg-purple-400"></span>Node.js Architecture</span>
+          <span class="flex items-center gap-3"><span class="h-1.5 w-1.5 rounded-full bg-cyan-400"></span>Web3 &amp; SaaS Dashboards</span>
+          <span class="flex items-center gap-3"><span class="h-1.5 w-1.5 rounded-full bg-purple-400"></span>Automated Web Workflows</span>
+          <!-- Seamless Loop Duplicate -->
+          <span class="flex items-center gap-3"><span class="h-1.5 w-1.5 rounded-full bg-cyan-400"></span>AI Automation Prompt Engineering</span>
+          <span class="flex items-center gap-3"><span class="h-1.5 w-1.5 rounded-full bg-purple-400"></span>Interactive Motion UI &amp; GSAP Animations</span>
+          <span class="flex items-center gap-3"><span class="h-1.5 w-1.5 rounded-full bg-cyan-400"></span>Custom Full-Stack Web Design</span>
+          <span class="flex items-center gap-3"><span class="h-1.5 w-1.5 rounded-full bg-purple-400"></span>Node.js Architecture</span>
+          <span class="flex items-center gap-3"><span class="h-1.5 w-1.5 rounded-full bg-cyan-400"></span>Web3 &amp; SaaS Dashboards</span>
+          <span class="flex items-center gap-3"><span class="h-1.5 w-1.5 rounded-full bg-purple-400"></span>Automated Web Workflows</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===================================================================
+         3. ABOUT SECTION
+         =================================================================== -->
+    <section id="about" class="relative py-20 sm:py-28">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="grid items-start gap-12 lg:grid-cols-12">
+          <div class="reveal-up lg:col-span-6">
+            <div class="mb-4 inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.2em] text-cyan-400">
+              <span class="h-px w-8 bg-cyan-400/70" aria-hidden="true"></span>
+              <span>01 // About Rahique.dev</span>
+            </div>
+            <h2 class="kinetic-heading font-display text-3xl font-bold tracking-tight text-white sm:text-4xl">
+              Bespoke Architectures.
+              <span class="text-gradient-cyber block">Interactive Motion &amp; Autonomous Systems.</span>
+            </h2>
+            <p class="mt-6 text-base leading-relaxed text-slate-300 sm:text-lg">
+              I don&rsquo;t ship generic templates or bloated site-builder clones. Every project is engineered from
+              scratch—combining Custom Full-Stack Web Design, kinetic GSAP frontend motion, and deterministic AI
+              automation pipelines built in Node.js.
+            </p>
+            <p class="mt-4 text-base leading-relaxed text-slate-400">
+              Whether you need an interactive Web3 launchpad, a conversion-obsessed SaaS dashboard, or an automated
+              web workflow that runs 24/7 without manual intervention, I build systems designed to scale cleanly.
+            </p>
+
+            <div class="mt-8 flex flex-wrap gap-4">
+              <a
+                href="#contact"
+                class="magnetic-btn btn-cyber-ghost gap-2 rounded-xl px-5 py-3 text-sm font-semibold text-cyan-300"
+              >
+                <span>Start a Custom Build</span>
+                <i class="fa-solid fa-arrow-right text-xs" aria-hidden="true"></i>
+              </a>
+            </div>
+          </div>
+
+          <div class="grid gap-4 sm:grid-cols-2 lg:col-span-6">
+            <article class="reveal-up glass-card tilt-card rounded-2xl p-6">
+              <div class="mb-4 flex h-11 w-11 items-center justify-center rounded-xl border border-cyan-400/30 bg-cyan-400/10 text-cyan-300">
+                <i class="fa-solid fa-layer-group text-lg" aria-hidden="true"></i>
+              </div>
+              <h3 class="font-display text-lg font-semibold text-white">Bespoke Architectures</h3>
+              <p class="mt-2 text-sm leading-relaxed text-slate-400">
+                Clean, modular full-stack codebases structured specifically around your product logic and scale.
+              </p>
+            </article>
+
+            <article class="reveal-up glass-card tilt-card rounded-2xl p-6">
+              <div class="mb-4 flex h-11 w-11 items-center justify-center rounded-xl border border-purple-400/30 bg-purple-400/10 text-purple-300">
+                <i class="fa-solid fa-wand-magic-sparkles text-lg" aria-hidden="true"></i>
+              </div>
+              <h3 class="font-display text-lg font-semibold text-white">Interactive Frontend Motion</h3>
+              <p class="mt-2 text-sm leading-relaxed text-slate-400">
+                Lenis smooth inertia, GSAP ScrollTrigger storytelling, and tactile 3D micro-interactions.
+              </p>
+            </article>
+
+            <article class="reveal-up glass-card tilt-card rounded-2xl p-6">
+              <div class="mb-4 flex h-11 w-11 items-center justify-center rounded-xl border border-cyan-400/30 bg-cyan-400/10 text-cyan-300">
+                <i class="fa-solid fa-brain text-lg" aria-hidden="true"></i>
+              </div>
+              <h3 class="font-display text-lg font-semibold text-white">AI-Powered Workflows</h3>
+              <p class="mt-2 text-sm leading-relaxed text-slate-400">
+                Structured prompt engineering and automated decision loops that convert inputs into production media.
+              </p>
+            </article>
+
+            <article class="reveal-up glass-card tilt-card rounded-2xl p-6">
+              <div class="mb-4 flex h-11 w-11 items-center justify-center rounded-xl border border-purple-400/30 bg-purple-400/10 text-purple-300">
+                <i class="fa-solid fa-robot text-lg" aria-hidden="true"></i>
+              </div>
+              <h3 class="font-display text-lg font-semibold text-white">Autonomous Systems</h3>
+              <p class="mt-2 text-sm leading-relaxed text-slate-400">
+                Headless browser workers, scheduled media pipelines, and fault-tolerant Node.js automation engines.
+              </p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         4. SKILLS MATRIX SECTION (6 Core Skills)
+         =================================================================== -->
+    <section id="skills" class="relative py-20 sm:py-28">
+      <div class="ambient-orb left-1/2 top-1/2 h-80 w-80 -translate-x-1/2 -translate-y-1/2 bg-indigo-600/15" aria-hidden="true"></div>
+
+      <div class="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="reveal-up mx-auto max-w-2xl text-center">
+          <div class="mb-4 inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.2em] text-cyan-400">
+            <span>02 // Technical Capabilities</span>
+          </div>
+          <h2 class="kinetic-heading font-display text-3xl font-bold tracking-tight text-white sm:text-4xl">
+            Core Engineering <span class="text-gradient-cyber">Skills Matrix</span>
+          </h2>
+          <p class="mt-4 text-base text-slate-400">
+            Six specialized pillars engineered for custom AI-powered applications, interactive motion UIs, and
+            automated web systems.
+          </p>
+        </div>
+
+        <div class="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <!-- Skill 1: AI Automation Prompt Engineering -->
+          <article class="reveal-up glass-card tilt-card rounded-2xl p-6">
+            <div class="flex items-start justify-between">
+              <div class="flex h-12 w-12 items-center justify-center rounded-xl border border-cyan-400/30 bg-cyan-400/10 text-cyan-300">
+                <i class="fa-solid fa-brain text-xl" aria-hidden="true"></i>
+              </div>
+              <span class="rounded-full border border-slate-700/80 bg-slate-900/80 px-2.5 py-1 font-mono text-[11px] text-cyan-300">
+                AI Systems
+              </span>
+            </div>
+            <h3 class="mt-5 font-display text-xl font-semibold text-white">AI Automation Prompt Engineering</h3>
+            <p class="mt-2 text-sm leading-relaxed text-slate-400">
+              Deterministic multi-step prompt chains, structured JSON generation, and automated agent workflows for
+              production AI apps.
+            </p>
+            <div class="mt-5 flex flex-wrap gap-2">
+              <span class="rounded-md bg-slate-800/80 px-2.5 py-1 font-mono text-xs text-slate-300">Prompt Chains</span>
+              <span class="rounded-md bg-slate-800/80 px-2.5 py-1 font-mono text-xs text-slate-300">AI Agents</span>
+            </div>
+          </article>
+
+          <!-- Skill 2: Interactive Motion UI & GSAP Animations -->
+          <article class="reveal-up glass-card tilt-card rounded-2xl p-6">
+            <div class="flex items-start justify-between">
+              <div class="flex h-12 w-12 items-center justify-center rounded-xl border border-purple-400/30 bg-purple-400/10 text-purple-300">
+                <i class="fa-solid fa-bezier-curve text-xl" aria-hidden="true"></i>
+              </div>
+              <span class="rounded-full border border-slate-700/80 bg-slate-900/80 px-2.5 py-1 font-mono text-[11px] text-purple-300">
+                Motion Craft
+              </span>
+            </div>
+            <h3 class="mt-5 font-display text-xl font-semibold text-white">Interactive Motion UI &amp; GSAP Animations</h3>
+            <p class="mt-2 text-sm leading-relaxed text-slate-400">
+              Awwwards-grade ScrollTrigger choreography, Lenis inertia scrolling, 3D tilt cards, and magnetic cursor
+              physics.
+            </p>
+            <div class="mt-5 flex flex-wrap gap-2">
+              <span class="rounded-md bg-slate-800/80 px-2.5 py-1 font-mono text-xs text-slate-300">GSAP</span>
+              <span class="rounded-md bg-slate-800/80 px-2.5 py-1 font-mono text-xs text-slate-300">Lenis Scroll</span>
+            </div>
+          </article>
+
+          <!-- Skill 3: Custom Full-Stack Web Design -->
+          <article class="reveal-up glass-card tilt-card rounded-2xl p-6">
+            <div class="flex items-start justify-between">
+              <div class="flex h-12 w-12 items-center justify-center rounded-xl border border-sky-400/30 bg-sky-400/10 text-sky-300">
+                <i class="fa-solid fa-wand-magic-sparkles text-xl" aria-hidden="true"></i>
+              </div>
+              <span class="rounded-full border border-slate-700/80 bg-slate-900/80 px-2.5 py-1 font-mono text-[11px] text-sky-300">
+                Conversion UX
+              </span>
+            </div>
+            <h3 class="mt-5 font-display text-xl font-semibold text-white">Custom Full-Stack Web Design</h3>
+            <p class="mt-2 text-sm leading-relaxed text-slate-400">
+              High-converting landing pages, responsive glassmorphic storefronts, and semantic HTML5 / Tailwind CSS
+              architectures.
+            </p>
+            <div class="mt-5 flex flex-wrap gap-2">
+              <span class="rounded-md bg-slate-800/80 px-2.5 py-1 font-mono text-xs text-slate-300">Tailwind CSS</span>
+              <span class="rounded-md bg-slate-800/80 px-2.5 py-1 font-mono text-xs text-slate-300">Responsive UI</span>
+            </div>
+          </article>
+
+          <!-- Skill 4: Node.js Architecture -->
+          <article class="reveal-up glass-card tilt-card rounded-2xl p-6">
+            <div class="flex items-start justify-between">
+              <div class="flex h-12 w-12 items-center justify-center rounded-xl border border-emerald-400/30 bg-emerald-400/10 text-emerald-300">
+                <i class="fa-brands fa-node-js text-2xl" aria-hidden="true"></i>
+              </div>
+              <span class="rounded-full border border-slate-700/80 bg-slate-900/80 px-2.5 py-1 font-mono text-[11px] text-emerald-300">
+                Backend Core
+              </span>
+            </div>
+            <h3 class="mt-5 font-display text-xl font-semibold text-white">Node.js Architecture</h3>
+            <p class="mt-2 text-sm leading-relaxed text-slate-400">
+              Scalable server runtimes, asynchronous background workers, stream pipelines, and resilient application
+              foundations.
+            </p>
+            <div class="mt-5 flex flex-wrap gap-2">
+              <span class="rounded-md bg-slate-800/80 px-2.5 py-1 font-mono text-xs text-slate-300">Express / Fastify</span>
+              <span class="rounded-md bg-slate-800/80 px-2.5 py-1 font-mono text-xs text-slate-300">Job Queues</span>
+            </div>
+          </article>
+
+          <!-- Skill 5: Web3 & SaaS Dashboards -->
+          <article class="reveal-up glass-card tilt-card rounded-2xl p-6">
+            <div class="flex items-start justify-between">
+              <div class="flex h-12 w-12 items-center justify-center rounded-xl border border-indigo-400/30 bg-indigo-400/10 text-indigo-300">
+                <i class="fa-solid fa-cubes text-xl" aria-hidden="true"></i>
+              </div>
+              <span class="rounded-full border border-slate-700/80 bg-slate-900/80 px-2.5 py-1 font-mono text-[11px] text-indigo-300">
+                Product UI
+              </span>
+            </div>
+            <h3 class="mt-5 font-display text-xl font-semibold text-white">Web3 &amp; SaaS Dashboards</h3>
+            <p class="mt-2 text-sm leading-relaxed text-slate-400">
+              Interactive DeFi launchpads, tokenomics calculators, wallet modals, and real-time SaaS telemetry consoles.
+            </p>
+            <div class="mt-5 flex flex-wrap gap-2">
+              <span class="rounded-md bg-slate-800/80 px-2.5 py-1 font-mono text-xs text-slate-300">DeFi UI</span>
+              <span class="rounded-md bg-slate-800/80 px-2.5 py-1 font-mono text-xs text-slate-300">SaaS Consoles</span>
+            </div>
+          </article>
+
+          <!-- Skill 6: Automated Web Workflows -->
+          <article class="reveal-up glass-card tilt-card rounded-2xl p-6">
+            <div class="flex items-start justify-between">
+              <div class="flex h-12 w-12 items-center justify-center rounded-xl border border-purple-400/30 bg-purple-400/10 text-purple-300">
+                <i class="fa-solid fa-robot text-xl" aria-hidden="true"></i>
+              </div>
+              <span class="rounded-full border border-slate-700/80 bg-slate-900/80 px-2.5 py-1 font-mono text-[11px] text-purple-300">
+                Automation
+              </span>
+            </div>
+            <h3 class="mt-5 font-display text-xl font-semibold text-white">Automated Web Workflows</h3>
+            <p class="mt-2 text-sm leading-relaxed text-slate-400">
+              Headless browser orchestration, automated video pipelines with FFmpeg, and scheduled bots that eliminate
+              manual work.
+            </p>
+            <div class="mt-5 flex flex-wrap gap-2">
+              <span class="rounded-md bg-slate-800/80 px-2.5 py-1 font-mono text-xs text-slate-300">Video Pipelines</span>
+              <span class="rounded-md bg-slate-800/80 px-2.5 py-1 font-mono text-xs text-slate-300">Playwright</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         5. FEATURED SYSTEMS & PROJECTS GRID (#projects)
+         =================================================================== -->
+    <section id="projects" class="relative py-20 sm:py-28">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="reveal-up flex flex-col justify-between gap-6 md:flex-row md:items-end">
+          <div class="max-w-2xl">
+            <div class="mb-4 inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.2em] text-cyan-400">
+              <span class="h-px w-8 bg-cyan-400/70" aria-hidden="true"></span>
+              <span>03 // Featured Systems &amp; Projects</span>
+            </div>
+            <h2 class="kinetic-heading font-display text-3xl font-bold tracking-tight text-white sm:text-4xl">
+              Flagship <span class="text-gradient-cyber">Interactive Live Demos</span>
+            </h2>
+            <p class="mt-4 text-base text-slate-400">
+              Launch any standalone live experience below or browse the complete directory inside the
+              <code class="font-mono text-xs text-purple-300">./Projects/</code> suite.
+            </p>
+          </div>
+          <a
+            href="./Projects/index.html"
+            class="magnetic-btn btn-neon-primary w-fit gap-2 rounded-xl px-5 py-3 text-sm font-bold"
+          >
+            <span>Explore All Projects Hub &rarr;</span>
+          </a>
+        </div>
+
+        <!-- 4 Flagship Project Cards (Single Full-Width Launch Live Demo Button Only) -->
+        <div class="mt-12 grid gap-8 md:grid-cols-2">
+          <!-- CARD 1: NexusFi Web3 -->
+          <article class="reveal-up project-card glass-card tilt-card flex flex-col overflow-hidden rounded-2xl">
+            <div class="project-media-wrapper relative aspect-video overflow-hidden border-b border-slate-800/80 bg-[#070b16]">
+              <div class="project-mockup flex h-full w-full flex-col justify-between bg-gradient-to-br from-cyan-950/70 via-[#080f20] to-purple-950/70 p-5">
+                <div class="flex items-center justify-between">
+                  <span class="rounded-md border border-cyan-400/35 bg-cyan-400/10 px-2.5 py-1 font-mono text-[11px] text-cyan-300">
+                    WEB3 // DEFI LAUNCHPAD
+                  </span>
+                  <span class="font-mono text-[11px] text-emerald-300">TVL $148.4M</span>
+                </div>
+                <div class="my-auto grid grid-cols-3 gap-3 text-center">
+                  <div class="rounded-xl border border-slate-700/70 bg-slate-900/90 p-3">
+                    <p class="font-display text-lg font-bold text-cyan-300">18.4%</p>
+                    <p class="font-mono text-[10px] text-slate-400">Staking APY</p>
+                  </div>
+                  <div class="rounded-xl border border-purple-400/40 bg-purple-950/50 p-3">
+                    <i class="fa-solid fa-wallet text-purple-300" aria-hidden="true"></i>
+                    <p class="mt-1 font-mono text-[10px] text-slate-200">Wallet Modal</p>
+                  </div>
+                  <div class="rounded-xl border border-slate-700/70 bg-slate-900/90 p-3">
+                    <p class="font-display text-lg font-bold text-emerald-300">0.4s</p>
+                    <p class="font-mono text-[10px] text-slate-400">Finality</p>
+                  </div>
+                </div>
+                <div class="h-1.5 w-full overflow-hidden rounded-full bg-slate-800">
+                  <div class="h-full w-4/5 rounded-full bg-gradient-to-r from-cyan-400 to-purple-500"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="flex flex-1 flex-col p-6 sm:p-7">
+              <h3 class="font-display text-xl font-bold text-white">NexusFi &mdash; Web3 DeFi &amp; Token Launchpad</h3>
+              <p class="mt-2.5 flex-1 text-sm leading-relaxed text-slate-400">
+                Interactive crypto launchpad featuring live animated tokenomics counters, staking yield calculator,
+                protocol roadmap, and Web3 wallet connection modal.
+              </p>
+
+              <div class="mt-5 flex flex-wrap gap-2">
+                <span class="rounded-full border border-cyan-400/25 bg-cyan-400/10 px-3 py-1 font-mono text-xs text-cyan-300">Web3 UI</span>
+                <span class="rounded-full border border-purple-400/25 bg-purple-400/10 px-3 py-1 font-mono text-xs text-purple-300">GSAP Motion</span>
+                <span class="rounded-full border border-slate-700 bg-slate-800/80 px-3 py-1 font-mono text-xs text-slate-300">Tailwind CSS</span>
+              </div>
+
+              <div class="mt-6 border-t border-slate-800/80 pt-5">
+                <a
+                  href="./Projects/nexus-web3/index.html"
+                  class="magnetic-btn btn-neon-primary flex w-full items-center justify-center gap-2 rounded-xl px-5 py-3 text-sm font-bold tracking-wide"
+                >
+                  <span aria-hidden="true">&#9654;</span>
+                  <span>Launch Live Demo</span>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- CARD 2: Nyx Studio AI Media Automation SaaS -->
+          <article class="reveal-up project-card glass-card tilt-card flex flex-col overflow-hidden rounded-2xl">
+            <div class="project-media-wrapper relative aspect-video overflow-hidden border-b border-slate-800/80 bg-[#070b16]">
+              <div class="project-mockup flex h-full w-full flex-col justify-between bg-gradient-to-br from-purple-950/70 via-[#080f20] to-indigo-950/70 p-5">
+                <div class="flex items-center justify-between">
+                  <span class="rounded-md border border-purple-400/35 bg-purple-400/10 px-2.5 py-1 font-mono text-[11px] text-purple-300">
+                    SAAS // VIDEO PIPELINE
+                  </span>
+                  <span class="font-mono text-[11px] text-cyan-300">NODE.JS ENGINE</span>
+                </div>
+                <div class="my-auto flex items-center justify-center gap-3 sm:gap-4">
+                  <div class="rounded-xl border border-slate-700/70 bg-slate-900/90 px-3 py-2.5 text-center">
+                    <i class="fa-solid fa-clapperboard text-cyan-300" aria-hidden="true"></i>
+                    <p class="mt-1 font-mono text-[10px] text-slate-300">Ingest</p>
+                  </div>
+                  <i class="fa-solid fa-arrow-right text-xs text-cyan-400" aria-hidden="true"></i>
+                  <div class="rounded-xl border border-purple-400/45 bg-purple-950/50 px-3 py-2.5 text-center">
+                    <i class="fa-solid fa-microchip text-purple-300" aria-hidden="true"></i>
+                    <p class="mt-1 font-mono text-[10px] text-slate-200">AI Render</p>
+                  </div>
+                  <i class="fa-solid fa-arrow-right text-xs text-purple-400" aria-hidden="true"></i>
+                  <div class="rounded-xl border border-slate-700/70 bg-slate-900/90 px-3 py-2.5 text-center">
+                    <i class="fa-solid fa-cloud-arrow-up text-emerald-300" aria-hidden="true"></i>
+                    <p class="mt-1 font-mono text-[10px] text-slate-300">Distribute</p>
+                  </div>
+                </div>
+                <div class="flex items-center justify-between font-mono text-[11px] text-slate-400">
+                  <span>Interactive Workflow Simulator</span>
+                  <span class="text-emerald-300">98.7% Auto-Sync</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="flex flex-1 flex-col p-6 sm:p-7">
+              <h3 class="font-display text-xl font-bold text-white">Nyx Studio &mdash; AI Media Automation SaaS</h3>
+              <p class="mt-2.5 flex-1 text-sm leading-relaxed text-slate-400">
+                Dark SaaS platform and interactive automated video pipeline dashboard where users trigger live media
+                runs with real-time progress stages and pricing toggle.
+              </p>
+
+              <div class="mt-5 flex flex-wrap gap-2">
+                <span class="rounded-full border border-emerald-400/25 bg-emerald-400/10 px-3 py-1 font-mono text-xs text-emerald-300">Node.js</span>
+                <span class="rounded-full border border-purple-400/25 bg-purple-400/10 px-3 py-1 font-mono text-xs text-purple-300">AI Video Pipeline</span>
+                <span class="rounded-full border border-cyan-400/25 bg-cyan-400/10 px-3 py-1 font-mono text-xs text-cyan-300">SaaS Dashboard</span>
+              </div>
+
+              <div class="mt-6 border-t border-slate-800/80 pt-5">
+                <a
+                  href="./Projects/nyx-ai-studio/index.html"
+                  class="magnetic-btn btn-neon-primary flex w-full items-center justify-center gap-2 rounded-xl px-5 py-3 text-sm font-bold tracking-wide"
+                >
+                  <span aria-hidden="true">&#9654;</span>
+                  <span>Launch Live Demo</span>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- CARD 3: Botanica Modern Plant E-Commerce -->
+          <article class="reveal-up project-card glass-card tilt-card flex flex-col overflow-hidden rounded-2xl">
+            <div class="project-media-wrapper relative aspect-video overflow-hidden border-b border-slate-800/80 bg-[#06130d]">
+              <div class="project-mockup flex h-full w-full flex-col justify-between bg-gradient-to-br from-emerald-950/80 via-[#092016] to-teal-950/75 p-5">
+                <div class="flex items-center justify-between">
+                  <span class="rounded-md border border-emerald-400/35 bg-emerald-400/10 px-2.5 py-1 font-mono text-[11px] text-emerald-300">
+                    ORGANIC // PLANT STOREFRONT
+                  </span>
+                  <span class="font-mono text-[11px] text-emerald-200">Frosted Glass</span>
+                </div>
+                <div class="my-auto grid grid-cols-3 gap-2.5">
+                  <div class="rounded-xl border border-emerald-400/25 bg-emerald-950/60 p-2.5 text-center">
+                    <i class="fa-solid fa-leaf text-emerald-300" aria-hidden="true"></i>
+                    <p class="mt-1 font-mono text-[10px] text-emerald-100">Rare Plants</p>
+                  </div>
+                  <div class="rounded-xl border border-teal-400/35 bg-teal-950/60 p-2.5 text-center">
+                    <i class="fa-solid fa-seedling text-teal-300" aria-hidden="true"></i>
+                    <p class="mt-1 font-mono text-[10px] text-emerald-100">3D Cards</p>
+                  </div>
+                  <div class="rounded-xl border border-emerald-400/25 bg-emerald-950/60 p-2.5 text-center">
+                    <i class="fa-solid fa-basket-shopping text-lime-300" aria-hidden="true"></i>
+                    <p class="mt-1 font-mono text-[10px] text-emerald-100">Cart Drawer</p>
+                  </div>
+                </div>
+                <div class="flex items-center justify-between font-mono text-[11px] text-emerald-200/80">
+                  <span>Botanical Care Specs &amp; Filter</span>
+                  <span class="text-emerald-300">Organic-Modern UI</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="flex flex-1 flex-col p-6 sm:p-7">
+              <h3 class="font-display text-xl font-bold text-white">Botanica &mdash; Modern Plant E-Commerce</h3>
+              <p class="mt-2.5 flex-1 text-sm leading-relaxed text-slate-400">
+                Organic luxury emerald-green &amp; glassmorphism storefront featuring interactive 3D-tilt plant cards,
+                category filtering, care modal, and a slide-out cart drawer.
+              </p>
+
+              <div class="mt-5 flex flex-wrap gap-2">
+                <span class="rounded-full border border-emerald-400/30 bg-emerald-400/10 px-3 py-1 font-mono text-xs text-emerald-300">Organic UI</span>
+                <span class="rounded-full border border-teal-400/25 bg-teal-400/10 px-3 py-1 font-mono text-xs text-teal-300">3D Tilt Cards</span>
+                <span class="rounded-full border border-slate-700 bg-slate-800/80 px-3 py-1 font-mono text-xs text-slate-300">Cart Drawer</span>
+              </div>
+
+              <div class="mt-6 border-t border-slate-800/80 pt-5">
+                <a
+                  href="./Projects/botanica-plants/index.html"
+                  class="magnetic-btn btn-neon-primary flex w-full items-center justify-center gap-2 rounded-xl px-5 py-3 text-sm font-bold tracking-wide"
+                >
+                  <span aria-hidden="true">&#9654;</span>
+                  <span>Launch Live Demo</span>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- CARD 4: Veloce Creative Agency -->
+          <article class="reveal-up project-card glass-card tilt-card flex flex-col overflow-hidden rounded-2xl">
+            <div class="project-media-wrapper relative aspect-video overflow-hidden border-b border-slate-800/80 bg-[#070b16]">
+              <div class="project-mockup flex h-full w-full flex-col justify-between bg-gradient-to-br from-indigo-950/70 via-[#080f20] to-slate-900 p-5">
+                <div class="flex items-center justify-between">
+                  <span class="rounded-md border border-indigo-400/35 bg-indigo-400/10 px-2.5 py-1 font-mono text-[11px] text-indigo-300">
+                    AGENCY // KINETIC STUDIO
+                  </span>
+                  <span class="font-mono text-[11px] text-emerald-300">4.2x Conversion</span>
+                </div>
+                <div class="my-auto flex items-end gap-2 px-4 pt-3">
+                  <div class="h-9 w-full rounded-t bg-cyan-500/35"></div>
+                  <div class="h-14 w-full rounded-t bg-cyan-400/55"></div>
+                  <div class="h-12 w-full rounded-t bg-purple-500/45"></div>
+                  <div class="h-20 w-full rounded-t bg-gradient-to-t from-cyan-400/70 to-purple-500/85"></div>
+                  <div class="h-16 w-full rounded-t bg-cyan-400/65"></div>
+                </div>
+                <div class="flex items-center justify-between font-mono text-[11px] text-slate-400">
+                  <span>Interactive Pricing Calculator</span>
+                  <span class="text-purple-300">Booking Flow</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="flex flex-1 flex-col p-6 sm:p-7">
+              <h3 class="font-display text-xl font-bold text-white">Veloce &mdash; High-Conversion Creative Agency Site</h3>
+              <p class="mt-2.5 flex-1 text-sm leading-relaxed text-slate-400">
+                Editorial motion agency landing page equipped with kinetic typography, an interactive scope &amp;
+                pricing calculator, and a multi-step discovery call booking flow.
+              </p>
+
+              <div class="mt-5 flex flex-wrap gap-2">
+                <span class="rounded-full border border-purple-400/25 bg-purple-400/10 px-3 py-1 font-mono text-xs text-purple-300">GSAP Kinetic</span>
+                <span class="rounded-full border border-cyan-400/25 bg-cyan-400/10 px-3 py-1 font-mono text-xs text-cyan-300">Pricing Engine</span>
+                <span class="rounded-full border border-slate-700 bg-slate-800/80 px-3 py-1 font-mono text-xs text-slate-300">Booking Flow</span>
+              </div>
+
+              <div class="mt-6 border-t border-slate-800/80 pt-5">
+                <a
+                  href="./Projects/veloce-agency/index.html"
+                  class="magnetic-btn btn-neon-primary flex w-full items-center justify-center gap-2 rounded-xl px-5 py-3 text-sm font-bold tracking-wide"
+                >
+                  <span aria-hidden="true">&#9654;</span>
+                  <span>Launch Live Demo</span>
+                </a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         6. WORKING CONTACT SYSTEM (Direct to Gmail)
+         =================================================================== -->
+    <section id="contact" class="relative py-20 sm:py-28">
+      <div class="ambient-orb -bottom-16 right-12 h-72 w-72 bg-cyan-500/15" aria-hidden="true"></div>
+
+      <div class="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="grid gap-10 lg:grid-cols-12 lg:gap-12">
+          <!-- Left Direct Contact Cards -->
+          <div class="reveal-up lg:col-span-5">
+            <div class="mb-4 inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.2em] text-cyan-400">
+              <span class="h-px w-8 bg-cyan-400/70" aria-hidden="true"></span>
+              <span>04 // Start Your Project</span>
+            </div>
+            <h2 class="kinetic-heading font-display text-3xl font-bold tracking-tight text-white sm:text-4xl">
+              Ready to Automate &amp;
+              <span class="text-gradient-cyber block">Launch Something Extraordinary?</span>
+            </h2>
+            <p class="mt-4 text-base leading-relaxed text-slate-400">
+              Need an AI-powered web application, an automated video pipeline, a Web3/SaaS dashboard, or a
+              high-converting landing page? Send a message directly or connect below.
+            </p>
+
+            <div class="mt-8 space-y-4">
+              <!-- Email Card -->
+              <a
+                href="mailto:mdrahiqueshahrier@gmail.com?subject=Project%20Inquiry%20-%20Rahique.dev"
+                class="glass-card tilt-card flex items-center gap-4 rounded-2xl p-4"
+              >
+                <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-cyan-400/30 bg-cyan-400/10 text-cyan-300">
+                  <i class="fa-solid fa-envelope text-lg" aria-hidden="true"></i>
+                </div>
+                <div class="min-w-0">
+                  <p class="text-xs font-medium uppercase tracking-wider text-slate-400">Direct Email</p>
+                  <p class="truncate font-mono text-sm font-semibold text-white">mdrahiqueshahrier@gmail.com</p>
+                </div>
+                <i class="fa-solid fa-arrow-up-right-from-square ml-auto text-xs text-slate-400" aria-hidden="true"></i>
+              </a>
+
+              <!-- GitHub Card -->
+              <a
+                href="https://github.com/mdrahiqueshahrier"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="glass-card tilt-card flex items-center gap-4 rounded-2xl p-4"
+              >
+                <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-purple-400/30 bg-purple-400/10 text-purple-300">
+                  <i class="fa-brands fa-github text-xl" aria-hidden="true"></i>
+                </div>
+                <div class="min-w-0">
+                  <p class="text-xs font-medium uppercase tracking-wider text-slate-400">GitHub Profile</p>
+                  <p class="truncate font-mono text-sm font-semibold text-white">github.com/mdrahiqueshahrier</p>
+                </div>
+                <i class="fa-solid fa-arrow-up-right-from-square ml-auto text-xs text-slate-400" aria-hidden="true"></i>
+              </a>
+
+              <!-- LaborX Card -->
+              <a
+                href="https://laborx.com/freelancers/users/id479119"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="glass-card tilt-card flex items-center gap-4 rounded-2xl p-4"
+              >
+                <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-sky-400/30 bg-sky-400/10 text-sky-300">
+                  <i class="fa-solid fa-briefcase text-lg" aria-hidden="true"></i>
+                </div>
+                <div class="min-w-0">
+                  <p class="text-xs font-medium uppercase tracking-wider text-slate-400">LaborX Freelance</p>
+                  <p class="truncate font-mono text-sm font-semibold text-white">laborx.com/freelancers/users/id479119</p>
+                </div>
+                <i class="fa-solid fa-arrow-up-right-from-square ml-auto text-xs text-slate-400" aria-hidden="true"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Right FormSubmit AJAX Form -->
+          <div class="reveal-up lg:col-span-7">
+            <div class="glass-card tilt-card rounded-2xl p-6 sm:p-8">
+              <form
+                id="contact-form"
+                action="https://formsubmit.co/mdrahiqueshahrier@gmail.com"
+                method="POST"
+                novalidate
+                class="space-y-5"
+              >
+                <input type="hidden" name="_subject" value="New Portfolio Client Inquiry!" />
+
+                <div class="grid gap-5 sm:grid-cols-2">
+                  <div>
+                    <label for="contact-name" class="mb-2 block text-sm font-medium text-slate-200">
+                      Your Name
+                    </label>
+                    <input
+                      id="contact-name"
+                      name="name"
+                      type="text"
+                      required
+                      autocomplete="name"
+                      placeholder="Alex Mercer"
+                      class="w-full rounded-xl border border-slate-700/80 bg-slate-950/80 px-4 py-3 text-sm text-white placeholder-slate-500 transition-colors focus:border-cyan-400 focus:outline-none"
+                    />
+                  </div>
+
+                  <div>
+                    <label for="contact-email" class="mb-2 block text-sm font-medium text-slate-200">
+                      Email Address
+                    </label>
+                    <input
+                      id="contact-email"
+                      name="email"
+                      type="email"
+                      required
+                      autocomplete="email"
+                      placeholder="alex@company.com"
+                      class="w-full rounded-xl border border-slate-700/80 bg-slate-950/80 px-4 py-3 text-sm text-white placeholder-slate-500 transition-colors focus:border-cyan-400 focus:outline-none"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label for="contact-message" class="mb-2 block text-sm font-medium text-slate-200">
+                    Project Details
+                  </label>
+                  <textarea
+                    id="contact-message"
+                    name="message"
+                    rows="5"
+                    required
+                    placeholder="Tell me about the AI-powered app, automated workflow, Web3/SaaS dashboard, or modern landing page you want to build..."
+                    class="w-full resize-y rounded-xl border border-slate-700/80 bg-slate-950/80 px-4 py-3 text-sm text-white placeholder-slate-500 transition-colors focus:border-cyan-400 focus:outline-none"
+                  ></textarea>
+                </div>
+
+                <div id="form-feedback" role="status" aria-live="polite" class="hidden"></div>
+
+                <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                  <button
+                    id="contact-submit-btn"
+                    type="submit"
+                    class="magnetic-btn btn-neon-primary gap-2.5 rounded-xl px-7 py-3.5 text-sm font-bold tracking-wide"
+                  >
+                    <span id="contact-btn-text">Send Message</span>
+                    <i id="contact-btn-icon" class="fa-solid fa-paper-plane text-xs" aria-hidden="true"></i>
+                    <i id="contact-btn-spinner" class="fa-solid fa-circle-notch fa-spin hidden text-sm" aria-hidden="true"></i>
+                  </button>
+                  <p class="text-xs text-slate-400">
+                    Or email directly at
+                    <a
+                      href="mailto:mdrahiqueshahrier@gmail.com"
+                      class="font-medium text-cyan-300 underline decoration-cyan-400/40 underline-offset-4 hover:text-cyan-200"
+                    >
+                      mdrahiqueshahrier@gmail.com
+                    </a>
+                  </p>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- =====================================================================
+       7. FOOTER
+       ===================================================================== -->
+  <footer class="border-t border-slate-800/80 bg-[#03050a] py-9">
+    <div class="mx-auto flex max-w-7xl flex-col items-center justify-between gap-6 px-4 sm:flex-row sm:px-6 lg:px-8">
+      <div class="flex items-center gap-3">
+        <a href="./index.html" class="group flex items-center gap-2.5" aria-label="Back to top">
+          <svg
+            class="rs-logo-svg h-8 w-8"
+            viewBox="0 0 64 64"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+          >
+            <defs>
+              <linearGradient id="footerRsGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#00E5FF" />
+                <stop offset="50%" stop-color="#38BDF8" />
+                <stop offset="100%" stop-color="#A855F7" />
+              </linearGradient>
+            </defs>
+            <rect
+              class="rs-logo-frame"
+              x="4"
+              y="4"
+              width="56"
+              height="56"
+              rx="14"
+              fill="#070B14"
+              stroke="url(#footerRsGrad)"
+              stroke-width="2.8"
+            />
+            <path
+              d="M16 45V19H25.5C29.2 19 31.5 21.2 31.5 25C31.5 28.8 29.2 31 25.5 31H16M24.5 31L31 45"
+              stroke="url(#footerRsGrad)"
+              stroke-width="3.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M48 22.5C46.5 19.8 43.2 19 40 19.6C36.8 20.2 35.4 23.2 36.4 26C37.2 28.3 39.6 29.5 42.6 30.8C45.8 32.2 48.2 33.8 48.2 37.8C48.2 42 44.8 45 40.5 45C37.2 45 34.8 43.4 33.8 40.8"
+              stroke="#00E5FF"
+              stroke-width="3.8"
+              stroke-linecap="round"
+            />
+          </svg>
+          <span class="font-display text-sm font-bold text-white">Rahique<span class="text-cyan-400">.dev</span></span>
+        </a>
+        <span class="text-slate-700">|</span>
+        <p class="text-sm text-slate-400">
+          &copy; <span id="current-year">2026</span>
+          <span class="font-medium text-slate-200">Md. Rahique Shahrier</span>. All rights reserved.
+        </p>
+      </div>
+
+      <div class="flex items-center gap-3.5">
+        <a
+          href="https://github.com/mdrahiqueshahrier"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="GitHub Profile"
+          class="magnetic-btn flex h-9 w-9 items-center justify-center rounded-lg border border-slate-800 bg-slate-900/80 text-slate-300 transition-colors hover:border-cyan-400/50 hover:text-cyan-300"
+        >
+          <i class="fa-brands fa-github" aria-hidden="true"></i>
+        </a>
+        <a
+          href="https://laborx.com/freelancers/users/id479119"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="LaborX Freelance Profile"
+          class="magnetic-btn flex h-9 w-9 items-center justify-center rounded-lg border border-slate-800 bg-slate-900/80 text-slate-300 transition-colors hover:border-purple-400/50 hover:text-purple-300"
+        >
+          <i class="fa-solid fa-briefcase" aria-hidden="true"></i>
+        </a>
+        <a
+          href="mailto:mdrahiqueshahrier@gmail.com"
+          aria-label="Send Email to Md. Rahique Shahrier"
+          class="magnetic-btn flex h-9 w-9 items-center justify-center rounded-lg border border-slate-800 bg-slate-900/80 text-slate-300 transition-colors hover:border-cyan-400/50 hover:text-cyan-300"
+        >
+          <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- =====================================================================
+       GLOWING CONTACT SUCCESS CONFIRMATION MODAL
+       ===================================================================== -->
+  <div
+    id="contact-success-modal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="success-modal-title"
+    class="modal-backdrop fixed inset-0 z-50 hidden items-center justify-center p-4"
+  >
+    <div class="glass-card relative w-full max-w-md rounded-2xl border border-cyan-400/40 bg-[#070c18] p-7 text-center shadow-[0_0_50px_-10px_rgba(0,229,255,0.45)]">
+      <button
+        id="success-modal-close"
+        type="button"
+        aria-label="Close confirmation modal"
+        class="absolute right-4 top-4 flex h-8 w-8 items-center justify-center rounded-lg border border-slate-700/80 text-slate-400 transition-colors hover:border-cyan-400/50 hover:text-white"
+      >
+        <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+      </button>
+
+      <div class="success-pop-anim mx-auto flex h-16 w-16 items-center justify-center rounded-2xl border border-emerald-400/40 bg-emerald-400/15 text-emerald-300 shadow-[0_0_30px_-4px_rgba(52,211,153,0.6)]">
+        <i class="fa-solid fa-check text-2xl" aria-hidden="true"></i>
+      </div>
+
+      <h3 id="success-modal-title" class="mt-5 font-display text-2xl font-bold text-white">
+        Inquiry Dispatched!
+      </h3>
+      <p class="mt-2.5 text-sm leading-relaxed text-slate-300">
+        Thank you for reaching out. Your message has been sent directly to
+        <span class="font-mono text-cyan-300">mdrahiqueshahrier@gmail.com</span>. I will review your project scope
+        and respond shortly.
+      </p>
+
+      <div class="mt-6 flex justify-center">
+        <button
+          id="success-modal-done"
+          type="button"
+          class="magnetic-btn btn-neon-primary rounded-xl px-7 py-2.5 text-sm font-bold"
+        >
+          Back to Portfolio
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Lenis Smooth Scroll CDN -->
+  <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js" crossorigin="anonymous"></script>
+
+  <!-- GSAP & ScrollTrigger CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <!-- Global Motion & Interaction Engine (Relative Path) -->
+  <script src="./script.js"></script>
+</body>
+</html>
