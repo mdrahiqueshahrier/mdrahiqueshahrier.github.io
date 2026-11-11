@@ -1,19 +1,24 @@
 /**
- * Md. Rahique Shahrier — Portfolio Interactivity & GSAP Animations
- * Zero-dependency Vanilla JS + GSAP/ScrollTrigger
+ * Rahique.dev — Creative Technologist Motion & Interactivity Engine
+ * Lenis Smooth Scroll + GSAP/ScrollTrigger + Dual-Ring Cursor + 3D Tilt + FormSubmit AJAX
  */
 
 document.addEventListener('DOMContentLoaded', () => {
   'use strict';
 
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const isFinePointer = window.matchMedia('(pointer: fine)').matches;
 
   initFooterYear();
-  initNavbar();
+  const lenisInstance = initLenisAndGsapSync(prefersReducedMotion);
+  initNavbar(lenisInstance);
   initMobileMenu();
-  initHeroParticles(prefersReducedMotion);
-  initGsapAnimations(prefersReducedMotion);
-  initDemoModal();
+  initCustomCursor(prefersReducedMotion, isFinePointer);
+  initMagneticButtons(prefersReducedMotion, isFinePointer);
+  initTiltCards(prefersReducedMotion, isFinePointer);
+  initAuroraParticles(prefersReducedMotion);
+  initGsapChoreography(prefersReducedMotion);
+  initProjectFilters();
   initContactForm();
 });
 
@@ -28,7 +33,56 @@ function initFooterYear() {
 }
 
 /* --------------------------------------------------------------------------
-   2. Sticky Navbar Scroll State & Active Section Highlighting
+   2. Lenis Smooth Scroll + GSAP ScrollTrigger Synchronization
+   -------------------------------------------------------------------------- */
+function initLenisAndGsapSync(prefersReducedMotion) {
+  if (prefersReducedMotion || typeof window.Lenis === 'undefined') {
+    return null;
+  }
+
+  const lenis = new window.Lenis({
+    duration: 1.15,
+    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    smoothWheel: true,
+    wheelMultiplier: 0.95,
+    touchMultiplier: 1.5,
+  });
+
+  if (typeof window.gsap !== 'undefined' && typeof window.ScrollTrigger !== 'undefined') {
+    const { gsap, ScrollTrigger } = window;
+    gsap.registerPlugin(ScrollTrigger);
+    lenis.on('scroll', ScrollTrigger.update);
+
+    gsap.ticker.add((time) => {
+      lenis.raf(time * 1000);
+    });
+    gsap.ticker.lagSmoothing(0);
+  } else {
+    const raf = (time) => {
+      lenis.raf(time);
+      window.requestAnimationFrame(raf);
+    };
+    window.requestAnimationFrame(raf);
+  }
+
+  // Smooth anchor scrolling via Lenis
+  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener('click', (event) => {
+      const targetId = anchor.getAttribute('href');
+      if (!targetId || targetId === '#') return;
+      const targetEl = document.querySelector(targetId);
+      if (targetEl) {
+        event.preventDefault();
+        lenis.scrollTo(targetEl, { offset: -76 });
+      }
+    });
+  });
+
+  return lenis;
+}
+
+/* --------------------------------------------------------------------------
+   3. Sticky Navbar Scroll State & Active Section Highlighting
    -------------------------------------------------------------------------- */
 function initNavbar() {
   const header = document.getElementById('site-header');
@@ -65,7 +119,7 @@ function initNavbar() {
 }
 
 /* --------------------------------------------------------------------------
-   3. Responsive Mobile Navigation Drawer
+   4. Mobile Navigation Drawer
    -------------------------------------------------------------------------- */
 function initMobileMenu() {
   const btn = document.getElementById('mobile-menu-btn');
@@ -100,9 +154,142 @@ function initMobileMenu() {
 }
 
 /* --------------------------------------------------------------------------
-   4. Hero Particle Constellation Canvas
+   5. Dual-Ring Magnetic Cursor with Neon Spotlight Glow
    -------------------------------------------------------------------------- */
-function initHeroParticles(prefersReducedMotion) {
+function initCustomCursor(prefersReducedMotion, isFinePointer) {
+  if (prefersReducedMotion || !isFinePointer) return;
+
+  const dot = document.createElement('div');
+  dot.className = 'cursor-dot';
+  dot.setAttribute('aria-hidden', 'true');
+
+  const ring = document.createElement('div');
+  ring.className = 'cursor-ring';
+  ring.setAttribute('aria-hidden', 'true');
+
+  document.body.appendChild(ring);
+  document.body.appendChild(dot);
+  document.body.classList.add('has-custom-cursor');
+
+  let mouseX = -100;
+  let mouseY = -100;
+  let ringX = -100;
+  let ringY = -100;
+  let isVisible = false;
+
+  const showCursor = () => {
+    if (isVisible) return;
+    isVisible = true;
+    dot.style.opacity = '1';
+    ring.style.opacity = '1';
+  };
+
+  const hideCursor = () => {
+    isVisible = false;
+    dot.style.opacity = '0';
+    ring.style.opacity = '0';
+  };
+
+  window.addEventListener('mousemove', (event) => {
+    mouseX = event.clientX;
+    mouseY = event.clientY;
+    showCursor();
+    dot.style.left = `${mouseX}px`;
+    dot.style.top = `${mouseY}px`;
+  });
+
+  document.addEventListener('mouseleave', hideCursor);
+
+  const animateRing = () => {
+    ringX += (mouseX - ringX) * 0.16;
+    ringY += (mouseY - ringY) * 0.16;
+    ring.style.left = `${ringX}px`;
+    ring.style.top = `${ringY}px`;
+    window.requestAnimationFrame(animateRing);
+  };
+  window.requestAnimationFrame(animateRing);
+
+  const interactiveSelector = 'a, button, input, textarea, [role="button"]';
+  document.addEventListener('mouseover', (event) => {
+    const interactiveEl = event.target.closest(interactiveSelector);
+    const cardEl = event.target.closest('.tilt-card');
+    if (interactiveEl) {
+      dot.classList.add('is-hovering');
+      ring.classList.add('is-hovering');
+    } else if (cardEl) {
+      ring.classList.add('is-card-hover');
+    }
+  });
+
+  document.addEventListener('mouseout', (event) => {
+    const interactiveEl = event.target.closest(interactiveSelector);
+    const cardEl = event.target.closest('.tilt-card');
+    if (interactiveEl) {
+      dot.classList.remove('is-hovering');
+      ring.classList.remove('is-hovering');
+    }
+    if (cardEl) {
+      ring.classList.remove('is-card-hover');
+    }
+  });
+}
+
+/* --------------------------------------------------------------------------
+   6. Magnetic Buttons Hover Pull Physics
+   -------------------------------------------------------------------------- */
+function initMagneticButtons(prefersReducedMotion, isFinePointer) {
+  if (prefersReducedMotion || !isFinePointer) return;
+
+  const buttons = document.querySelectorAll('.magnetic-btn');
+  buttons.forEach((btn) => {
+    const strength = Number(btn.dataset.magneticStrength || 14);
+
+    btn.addEventListener('mousemove', (event) => {
+      const rect = btn.getBoundingClientRect();
+      const relX = event.clientX - rect.left - rect.width / 2;
+      const relY = event.clientY - rect.top - rect.height / 2;
+      const moveX = (relX / (rect.width / 2)) * strength;
+      const moveY = (relY / (rect.height / 2)) * strength;
+      btn.style.transform = `translate3d(${moveX.toFixed(2)}px, ${moveY.toFixed(2)}px, 0)`;
+    });
+
+    btn.addEventListener('mouseleave', () => {
+      btn.style.transform = 'translate3d(0, 0, 0)';
+    });
+  });
+}
+
+/* --------------------------------------------------------------------------
+   7. 3D Perspective Tilt Cards + Dynamic Glassmorphism Spotlight Tracking
+   -------------------------------------------------------------------------- */
+function initTiltCards(prefersReducedMotion, isFinePointer) {
+  if (prefersReducedMotion || !isFinePointer) return;
+
+  const cards = document.querySelectorAll('.tilt-card');
+  cards.forEach((card) => {
+    card.addEventListener('mousemove', (event) => {
+      const rect = card.getBoundingClientRect();
+      const x = event.clientX - rect.left;
+      const y = event.clientY - rect.top;
+
+      card.style.setProperty('--mouse-x', `${x}px`);
+      card.style.setProperty('--mouse-y', `${y}px`);
+
+      const rotateY = ((x / rect.width) - 0.5) * 9;
+      const rotateX = ((y / rect.height) - 0.5) * -9;
+      card.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) translateY(-4px)`;
+    });
+
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0)';
+    });
+  });
+}
+
+/* --------------------------------------------------------------------------
+   8. Interactive Aurora Shader Mesh & Particle Constellation Canvas
+   -------------------------------------------------------------------------- */
+function initAuroraParticles(prefersReducedMotion) {
   const canvas = document.getElementById('hero-particles');
   if (!canvas) return;
 
@@ -113,19 +300,30 @@ function initHeroParticles(prefersReducedMotion) {
   let height = 0;
   let particles = [];
   let animationFrameId = null;
-  const pointer = { x: null, y: null, radius: 130 };
+  let tick = 0;
+  const pointer = { x: null, y: null, radius: 150 };
 
-  const colors = ['rgba(0, 229, 255, 0.75)', 'rgba(168, 85, 247, 0.7)', 'rgba(148, 163, 184, 0.45)'];
+  const colors = [
+    'rgba(0, 229, 255, 0.8)',
+    'rgba(168, 85, 247, 0.78)',
+    'rgba(56, 189, 248, 0.55)',
+  ];
+
+  const auroraNodes = [
+    { baseX: 0.22, baseY: 0.3, radiusFactor: 0.38, color: 'rgba(0, 229, 255, 0.11)', speed: 0.008 },
+    { baseX: 0.78, baseY: 0.36, radiusFactor: 0.42, color: 'rgba(168, 85, 247, 0.12)', speed: 0.006 },
+    { baseX: 0.52, baseY: 0.74, radiusFactor: 0.36, color: 'rgba(99, 102, 241, 0.09)', speed: 0.007 },
+  ];
 
   const createParticles = () => {
     const area = width * height;
-    const count = Math.min(68, Math.max(24, Math.floor(area / 19000)));
+    const count = Math.min(72, Math.max(26, Math.floor(area / 18500)));
     particles = Array.from({ length: count }, () => ({
       x: Math.random() * width,
       y: Math.random() * height,
-      vx: (Math.random() - 0.5) * 0.42,
-      vy: (Math.random() - 0.5) * 0.42,
-      radius: Math.random() * 1.8 + 1,
+      vx: (Math.random() - 0.5) * 0.45,
+      vy: (Math.random() - 0.5) * 0.45,
+      radius: Math.random() * 1.9 + 1,
       color: colors[Math.floor(Math.random() * colors.length)],
     }));
   };
@@ -149,8 +347,28 @@ function initHeroParticles(prefersReducedMotion) {
     }
   };
 
+  const drawAuroraMesh = () => {
+    auroraNodes.forEach((node, idx) => {
+      const offsetX = prefersReducedMotion ? 0 : Math.sin(tick * node.speed + idx * 2.1) * 55;
+      const offsetY = prefersReducedMotion ? 0 : Math.cos(tick * node.speed + idx * 1.7) * 40;
+      const cx = width * node.baseX + offsetX;
+      const cy = height * node.baseY + offsetY;
+      const rad = Math.max(width, height) * node.radiusFactor;
+
+      const grad = ctx.createRadialGradient(cx, cy, 0, cx, cy, rad);
+      grad.addColorStop(0, node.color);
+      grad.addColorStop(1, 'rgba(4, 6, 12, 0)');
+
+      ctx.fillStyle = grad;
+      ctx.fillRect(0, 0, width, height);
+    });
+  };
+
   const drawFrame = () => {
+    tick += 1;
     ctx.clearRect(0, 0, width, height);
+
+    drawAuroraMesh();
 
     for (let i = 0; i < particles.length; i += 1) {
       const p = particles[i];
@@ -167,8 +385,8 @@ function initHeroParticles(prefersReducedMotion) {
           const dy = pointer.y - p.y;
           const dist = Math.hypot(dx, dy);
           if (dist < pointer.radius && dist > 0) {
-            p.x -= (dx / dist) * 0.35;
-            p.y -= (dy / dist) * 0.35;
+            p.x -= (dx / dist) * 0.4;
+            p.y -= (dy / dist) * 0.4;
           }
         }
       }
@@ -184,13 +402,13 @@ function initHeroParticles(prefersReducedMotion) {
         const dy = p.y - p2.y;
         const distance = Math.hypot(dx, dy);
 
-        if (distance < 130) {
-          const alpha = (1 - distance / 130) * 0.16;
+        if (distance < 135) {
+          const alpha = (1 - distance / 135) * 0.18;
           ctx.beginPath();
           ctx.moveTo(p.x, p.y);
           ctx.lineTo(p2.x, p2.y);
-          ctx.strokeStyle = `rgba(56, 189, 248, ${alpha.toFixed(3)})`;
-          ctx.lineWidth = 0.8;
+          ctx.strokeStyle = `rgba(0, 229, 255, ${alpha.toFixed(3)})`;
+          ctx.lineWidth = 0.85;
           ctx.stroke();
         }
       }
@@ -238,9 +456,9 @@ function initHeroParticles(prefersReducedMotion) {
 }
 
 /* --------------------------------------------------------------------------
-   5. GSAP Hero Entrance & ScrollTrigger Reveal Animations
+   9. GSAP Scroll Choreography, Kinetic Text & Animated Counters
    -------------------------------------------------------------------------- */
-function initGsapAnimations(prefersReducedMotion) {
+function initGsapChoreography(prefersReducedMotion) {
   if (prefersReducedMotion || typeof window.gsap === 'undefined') {
     return;
   }
@@ -255,257 +473,268 @@ function initGsapAnimations(prefersReducedMotion) {
   if (heroItems.length > 0) {
     gsap.fromTo(
       heroItems,
-      { opacity: 0, y: 26 },
+      { opacity: 0, y: 28 },
       {
         opacity: 1,
         y: 0,
-        duration: 0.85,
-        stagger: 0.1,
+        duration: 0.9,
+        stagger: 0.09,
         ease: 'power3.out',
         clearProps: 'transform,opacity',
       }
     );
   }
 
-  // Scroll-triggered fade-in & slide-up reveals
+  // Kinetic heading word reveals
+  const kineticTitles = document.querySelectorAll('.kinetic-heading');
+  if (ScrollTrigger && kineticTitles.length > 0) {
+    kineticTitles.forEach((heading) => {
+      gsap.fromTo(
+        heading,
+        { opacity: 0, y: 34, skewY: 2 },
+        {
+          opacity: 1,
+          y: 0,
+          skewY: 0,
+          duration: 0.85,
+          ease: 'power3.out',
+          clearProps: 'transform,opacity',
+          scrollTrigger: {
+            trigger: heading,
+            start: 'top 88%',
+            once: true,
+          },
+        }
+      );
+    });
+  }
+
+  // Staggered card & block scroll reveals
   const revealElements = gsap.utils.toArray('.reveal-up');
   if (ScrollTrigger && revealElements.length > 0) {
-    gsap.set(revealElements, { opacity: 0, y: 30 });
+    gsap.set(revealElements, { opacity: 0, y: 32 });
 
     ScrollTrigger.batch(revealElements, {
-      start: 'top 86%',
+      start: 'top 87%',
       once: true,
       onEnter: (batch) => {
         gsap.to(batch, {
           opacity: 1,
           y: 0,
-          duration: 0.75,
-          stagger: 0.12,
+          duration: 0.78,
+          stagger: 0.1,
           ease: 'power3.out',
           clearProps: 'transform,opacity',
         });
       },
     });
   }
+
+  // Animated numeric counters
+  const counters = document.querySelectorAll('[data-count-to]');
+  counters.forEach((counterEl) => {
+    const target = Number(counterEl.getAttribute('data-count-to'));
+    const suffix = counterEl.getAttribute('data-count-suffix') || '';
+    const decimals = Number(counterEl.getAttribute('data-count-decimals') || 0);
+    if (Number.isNaN(target)) return;
+
+    const state = { value: 0 };
+    const runCounter = () => {
+      gsap.to(state, {
+        value: target,
+        duration: 1.6,
+        ease: 'power2.out',
+        onUpdate: () => {
+          counterEl.textContent = `${state.value.toFixed(decimals)}${suffix}`;
+        },
+      });
+    };
+
+    if (ScrollTrigger) {
+      ScrollTrigger.create({
+        trigger: counterEl,
+        start: 'top 90%',
+        once: true,
+        onEnter: runCounter,
+      });
+    } else {
+      runCounter();
+    }
+  });
 }
 
 /* --------------------------------------------------------------------------
-   6. Interactive Project Live Demo Modal
+   10. Projects Hub Category Filters (for Projects/index.html)
    -------------------------------------------------------------------------- */
-function initDemoModal() {
-  const modal = document.getElementById('demo-modal');
-  const titleEl = document.getElementById('demo-modal-title');
-  const bodyEl = document.getElementById('demo-modal-body');
-  const closeBtn = document.getElementById('demo-modal-close');
-  const hireBtn = document.getElementById('demo-modal-hire');
-  const triggerButtons = document.querySelectorAll('[data-project-demo]');
+function initProjectFilters() {
+  const filterButtons = document.querySelectorAll('[data-filter-category]');
+  const projectCards = document.querySelectorAll('[data-project-category]');
+  if (filterButtons.length === 0 || projectCards.length === 0) return;
 
-  if (!modal || !titleEl || !bodyEl || !closeBtn) return;
-
-  const projectDetails = {
-    'video-pipeline': {
-      title: 'Automated Video Pipeline',
-      summary:
-        'A serverless-ready media automation workflow that transforms raw content feeds into rendered, subtitled social videos without manual editing.',
-      highlights: [
-        'Scheduled Node.js workers fetch scripts, media assets, and voiceover tracks via REST APIs.',
-        'Headless FFmpeg pipeline applies dynamic overlays, burned-in captions, and 16:9 / 9:16 exports.',
-        'Automatic retry queues and webhook notifications confirm publication status in real time.',
-      ],
-      metric: 'Reduced manual video production time by ~85% per batch.',
-    },
-    'ecommerce-api': {
-      title: 'Custom E-Commerce API',
-      summary:
-        'A modular headless commerce API engineered in Node.js for fast storefront checkouts, inventory integrity, and multi-channel synchronization.',
-      highlights: [
-        'Stateless JWT authentication with role-based endpoints for storefronts and admin dashboards.',
-        'Idempotent Stripe webhook handlers prevent duplicate order creation under high concurrency.',
-        'Automated low-stock alerts and invoice dispatch triggered asynchronously.',
-      ],
-      metric: 'Sub-50ms median API response across core catalog and cart endpoints.',
-    },
-    'workflow-engine': {
-      title: 'SaaS Workflow & Scraper Engine',
-      summary:
-        'A reliable browser and API automation suite built to replace repetitive manual data collection and cross-platform syncing.',
-      highlights: [
-        'Headless Playwright workers navigate authenticated portals with smart rate limiting.',
-        'Data validation layer normalizes records before pushing updates to Notion, Slack, and CRMs.',
-        'Structured error logging with instant alerts if target page schemas change.',
-      ],
-      metric: 'Processes 12,000+ automated sync operations daily with zero manual intervention.',
-    },
-    'telemetry-ui': {
-      title: 'Real-Time Telemetry Dashboard',
-      summary:
-        'A high-contrast, dark-mode operational command center designed for instant visibility into API health and automation jobs.',
-      highlights: [
-        'Responsive grid system built with semantic HTML5 and Tailwind CSS.',
-        'GSAP-choreographed transitions maintain crisp 60fps interaction across desktop and mobile.',
-        'Modular Vanilla JS state layer ready to connect to WebSocket or REST telemetry feeds.',
-      ],
-      metric: 'Lightweight zero-framework frontend delivering near-instant page loads.',
-    },
-  };
-
-  let lastFocusedTrigger = null;
-
-  const closeModal = () => {
-    modal.classList.add('hidden');
-    modal.classList.remove('flex');
-    document.body.style.overflow = '';
-    if (lastFocusedTrigger) {
-      lastFocusedTrigger.focus();
-      lastFocusedTrigger = null;
-    }
-  };
-
-  const openModal = (projectKey, triggerEl) => {
-    const project = projectDetails[projectKey];
-    if (!project) return;
-
-    lastFocusedTrigger = triggerEl;
-    titleEl.textContent = project.title;
-
-    bodyEl.innerHTML = '';
-
-    const summaryP = document.createElement('p');
-    summaryP.textContent = project.summary;
-    bodyEl.appendChild(summaryP);
-
-    const list = document.createElement('ul');
-    list.className = 'space-y-2 rounded-xl border border-slate-800 bg-slate-950/70 p-4';
-    project.highlights.forEach((item) => {
-      const li = document.createElement('li');
-      li.className = 'flex items-start gap-2.5 text-xs sm:text-sm text-slate-300';
-      const icon = document.createElement('i');
-      icon.className = 'fa-solid fa-circle-check mt-1 text-cyan-400';
-      icon.setAttribute('aria-hidden', 'true');
-      const span = document.createElement('span');
-      span.textContent = item;
-      li.appendChild(icon);
-      li.appendChild(span);
-      list.appendChild(li);
-    });
-    bodyEl.appendChild(list);
-
-    const metricBox = document.createElement('div');
-    metricBox.className =
-      'rounded-xl border border-purple-400/30 bg-purple-500/10 px-4 py-3 font-mono text-xs text-purple-200';
-    metricBox.textContent = `Impact: ${project.metric}`;
-    bodyEl.appendChild(metricBox);
-
-    modal.classList.remove('hidden');
-    modal.classList.add('flex');
-    document.body.style.overflow = 'hidden';
-    closeBtn.focus();
-  };
-
-  triggerButtons.forEach((btn) => {
+  filterButtons.forEach((btn) => {
     btn.addEventListener('click', () => {
-      openModal(btn.getAttribute('data-project-demo'), btn);
+      const selected = btn.getAttribute('data-filter-category');
+
+      filterButtons.forEach((b) => {
+        const isActive = b === btn;
+        b.classList.toggle('btn-neon-primary', isActive);
+        b.classList.toggle('btn-cyber-ghost', !isActive);
+        b.setAttribute('aria-pressed', String(isActive));
+      });
+
+      projectCards.forEach((card) => {
+        const category = card.getAttribute('data-project-category');
+        const shouldShow = selected === 'all' || category === selected;
+        card.classList.toggle('hidden', !shouldShow);
+      });
+
+      if (typeof window.ScrollTrigger !== 'undefined') {
+        window.ScrollTrigger.refresh();
+      }
     });
-  });
-
-  closeBtn.addEventListener('click', closeModal);
-  if (hireBtn) {
-    hireBtn.addEventListener('click', closeModal);
-  }
-
-  modal.addEventListener('click', (event) => {
-    if (event.target === modal) {
-      closeModal();
-    }
-  });
-
-  document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape' && !modal.classList.contains('hidden')) {
-      closeModal();
-    }
   });
 }
 
 /* --------------------------------------------------------------------------
-   7. Contact Form Validation & Mailto Fallback
+   11. Contact Form via FormSubmit AJAX + Glowing Success Modal
    -------------------------------------------------------------------------- */
 function initContactForm() {
   const form = document.getElementById('contact-form');
   const feedback = document.getElementById('form-feedback');
-  if (!form || !feedback) return;
+  const submitBtn = document.getElementById('contact-submit-btn');
+  const btnText = document.getElementById('contact-btn-text');
+  const btnIcon = document.getElementById('contact-btn-icon');
+  const btnSpinner = document.getElementById('contact-btn-spinner');
 
-  const recipientEmail = 'contact@rahiqueshahrier.dev';
+  const modal = document.getElementById('contact-success-modal');
+  const modalCloseBtn = document.getElementById('success-modal-close');
+  const modalDoneBtn = document.getElementById('success-modal-done');
 
-  const showFeedback = (type, message, mailtoUrl = null) => {
-    feedback.classList.remove(
-      'hidden',
-      'border-rose-500/40',
-      'bg-rose-500/10',
-      'text-rose-200',
-      'border-emerald-500/40',
-      'bg-emerald-500/10',
-      'text-emerald-200'
-    );
+  if (!form || !feedback || !submitBtn) return;
 
-    if (type === 'error') {
-      feedback.classList.add('border-rose-500/40', 'bg-rose-500/10', 'text-rose-200');
-      feedback.textContent = message;
-      return;
-    }
+  const recipientEmail = 'mdrahiqueshahrier@gmail.com';
+  const endpoint = `https://formsubmit.co/ajax/${recipientEmail}`;
 
-    feedback.classList.add('border-emerald-500/40', 'bg-emerald-500/10', 'text-emerald-200');
-    feedback.textContent = '';
+  const setLoading = (isLoading) => {
+    submitBtn.disabled = isLoading;
+    submitBtn.classList.toggle('opacity-80', isLoading);
+    submitBtn.classList.toggle('cursor-wait', isLoading);
+    if (btnText) btnText.textContent = isLoading ? 'Sending Inquiry...' : 'Send Message';
+    if (btnIcon) btnIcon.classList.toggle('hidden', isLoading);
+    if (btnSpinner) btnSpinner.classList.toggle('hidden', !isLoading);
+  };
 
-    const textNode = document.createElement('span');
-    textNode.textContent = message;
-    feedback.appendChild(textNode);
+  const showInlineError = (message, mailtoUrl = null) => {
+    feedback.classList.remove('hidden');
+    feedback.className = 'rounded-xl border border-rose-500/40 bg-rose-500/10 px-4 py-3 text-sm text-rose-200';
+    feedback.textContent = message;
 
     if (mailtoUrl) {
       const link = document.createElement('a');
       link.href = mailtoUrl;
       link.className = 'ml-2 font-semibold text-cyan-300 underline underline-offset-4 hover:text-cyan-200';
-      link.textContent = 'Open Email Client';
+      link.textContent = 'Send via Email App';
       feedback.appendChild(link);
     }
   };
 
-  form.addEventListener('submit', (event) => {
+  const clearFeedback = () => {
+    feedback.classList.add('hidden');
+    feedback.textContent = '';
+  };
+
+  const openSuccessModal = () => {
+    if (!modal) return;
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+    document.body.style.overflow = 'hidden';
+    if (modalDoneBtn) modalDoneBtn.focus();
+  };
+
+  const closeSuccessModal = () => {
+    if (!modal) return;
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
+    document.body.style.overflow = '';
+  };
+
+  if (modalCloseBtn) modalCloseBtn.addEventListener('click', closeSuccessModal);
+  if (modalDoneBtn) modalDoneBtn.addEventListener('click', closeSuccessModal);
+  if (modal) {
+    modal.addEventListener('click', (event) => {
+      if (event.target === modal) closeSuccessModal();
+    });
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && !modal.classList.contains('hidden')) {
+        closeSuccessModal();
+      }
+    });
+  }
+
+  form.addEventListener('submit', async (event) => {
     event.preventDefault();
+    clearFeedback();
 
     const name = form.elements.name.value.trim();
     const email = form.elements.email.value.trim();
     const message = form.elements.message.value.trim();
+    const subjectField = form.elements._subject ? form.elements._subject.value : 'New Portfolio Client Inquiry!';
 
     if (name.length < 2) {
-      showFeedback('error', 'Please enter your name (at least 2 characters).');
+      showInlineError('Please enter your name (at least 2 characters).');
       form.elements.name.focus();
       return;
     }
 
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailPattern.test(email)) {
-      showFeedback('error', 'Please enter a valid email address.');
+      showInlineError('Please enter a valid email address.');
       form.elements.email.focus();
       return;
     }
 
     if (message.length < 10) {
-      showFeedback('error', 'Please share a brief overview of your project (at least 10 characters).');
+      showInlineError('Please share a brief overview of your project (at least 10 characters).');
       form.elements.message.focus();
       return;
     }
 
-    const subject = encodeURIComponent(`Portfolio Inquiry from ${name}`);
+    setLoading(true);
+
+    const subject = encodeURIComponent(subjectField);
     const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nProject Details:\n${message}`);
-    const mailtoUrl = `mailto:${recipientEmail}?subject=${subject}&body=${body}`;
+    const mailtoFallback = `mailto:${recipientEmail}?subject=${subject}&body=${body}`;
 
-    showFeedback(
-      'success',
-      'Message validated and ready to send! Click to launch your email client:',
-      mailtoUrl
-    );
+    try {
+      const response = await fetch(endpoint, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify({
+          name,
+          email,
+          message,
+          _subject: subjectField,
+        }),
+      });
 
-    form.reset();
+      const result = await response.json().catch(() => ({}));
+
+      if (!response.ok || result.success === 'false' || result.success === false) {
+        throw new Error(result.message || 'Unable to send message right now.');
+      }
+
+      form.reset();
+      openSuccessModal();
+    } catch (error) {
+      showInlineError(
+        `Could not reach the mail relay (${error.message}). You can still reach me immediately:`,
+        mailtoFallback
+      );
+    } finally {
+      setLoading(false);
+    }
   });
 }
-
