@@ -1,0 +1,1136 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Md. Rahique Shahrier — Custom Web Developer &amp; Automation Specialist</title>
+  <meta
+    name="description"
+    content="Portfolio of Md. Rahique Shahrier — Custom Web Developer & Automation Specialist building robust digital solutions, seamless API integrations, and automated workflows."
+  />
+  <meta name="theme-color" content="#05070d" />
+
+  <!-- Open Graph Metadata -->
+  <meta property="og:title" content="Md. Rahique Shahrier — Custom Web Developer &amp; Automation Specialist" />
+  <meta
+    property="og:description"
+    content="I build robust digital solutions, seamless API integrations, and automated workflows."
+  />
+  <meta property="og:type" content="website" />
+
+  <!-- Google Fonts: Space Grotesk, Inter, JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- FontAwesome 6 Icons CDN -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            cyber: {
+              bg: '#05070d',
+              surface: '#0b101b',
+              card: '#0f1626',
+              blue: '#00e5ff',
+              purple: '#a855f7',
+              indigo: '#6366f1',
+            },
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Space Grotesk', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+        },
+      },
+    };
+  </script>
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="bg-cyber-bg text-slate-100 antialiased selection:bg-cyan-400/30">
+  <!-- Skip Navigation for Keyboard Accessibility -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- =====================================================================
+       1. HEADER / STICKY GLASS NAVBAR
+       ===================================================================== -->
+  <header id="site-header" class="navbar-glass fixed inset-x-0 top-0 z-50">
+    <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-3.5 sm:px-6 lg:px-8">
+      <!-- Brand Logo -->
+      <a
+        href="#hero"
+        class="group flex items-center gap-2.5 text-lg font-bold tracking-tight text-white"
+        aria-label="Md. Rahique Shahrier Home"
+      >
+        <span
+          class="flex h-9 w-9 items-center justify-center rounded-lg border border-cyan-400/40 bg-cyan-400/10 font-mono text-sm font-semibold text-cyan-300 shadow-[0_0_16px_-4px_rgba(0,229,255,0.6)] transition-transform duration-300 group-hover:scale-105"
+        >
+          RS
+        </span>
+        <span class="font-display tracking-tight">
+          Rahique<span class="text-cyan-400">.dev</span>
+        </span>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav aria-label="Primary Navigation" class="hidden items-center gap-8 md:flex">
+        <a href="#about" class="nav-link text-sm font-medium text-slate-300 transition-colors hover:text-white">
+          About
+        </a>
+        <a href="#skills" class="nav-link text-sm font-medium text-slate-300 transition-colors hover:text-white">
+          Skills
+        </a>
+        <a href="#portfolio" class="nav-link text-sm font-medium text-slate-300 transition-colors hover:text-white">
+          Portfolio
+        </a>
+        <a href="#contact" class="nav-link text-sm font-medium text-slate-300 transition-colors hover:text-white">
+          Contact
+        </a>
+      </nav>
+
+      <!-- Desktop CTA + Mobile Toggle -->
+      <div class="flex items-center gap-3">
+        <a
+          href="#contact"
+          class="btn-neon-primary hidden items-center gap-2 rounded-lg px-5 py-2.5 text-sm font-bold tracking-wide md:inline-flex"
+        >
+          <span>Hire Me</span>
+          <i class="fa-solid fa-arrow-right text-xs" aria-hidden="true"></i>
+        </a>
+
+        <button
+          id="mobile-menu-btn"
+          type="button"
+          class="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-slate-700/70 bg-slate-900/70 text-slate-200 transition-colors hover:border-cyan-400/50 hover:text-cyan-300 md:hidden"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+          aria-label="Toggle navigation menu"
+        >
+          <i id="mobile-menu-icon" class="fa-solid fa-bars text-base" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div
+      id="mobile-menu"
+      class="hidden border-t border-slate-800/80 bg-[#070b14]/95 px-4 pb-5 pt-3 backdrop-blur-xl md:hidden"
+    >
+      <nav aria-label="Mobile Navigation" class="flex flex-col space-y-2">
+        <a
+          href="#about"
+          class="mobile-nav-link rounded-lg px-3 py-2.5 text-sm font-medium text-slate-200 transition-colors hover:bg-slate-800/60 hover:text-cyan-300"
+        >
+          About
+        </a>
+        <a
+          href="#skills"
+          class="mobile-nav-link rounded-lg px-3 py-2.5 text-sm font-medium text-slate-200 transition-colors hover:bg-slate-800/60 hover:text-cyan-300"
+        >
+          Skills
+        </a>
+        <a
+          href="#portfolio"
+          class="mobile-nav-link rounded-lg px-3 py-2.5 text-sm font-medium text-slate-200 transition-colors hover:bg-slate-800/60 hover:text-cyan-300"
+        >
+          Portfolio
+        </a>
+        <a
+          href="#contact"
+          class="mobile-nav-link rounded-lg px-3 py-2.5 text-sm font-medium text-slate-200 transition-colors hover:bg-slate-800/60 hover:text-cyan-300"
+        >
+          Contact
+        </a>
+        <a
+          href="#contact"
+          class="mobile-nav-link btn-neon-primary mt-2 inline-flex items-center justify-center gap-2 rounded-lg px-5 py-2.5 text-sm font-bold"
+        >
+          <span>Hire Me</span>
+          <i class="fa-solid fa-bolt text-xs" aria-hidden="true"></i>
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <!-- ===================================================================
+         2. HERO SECTION
+         =================================================================== -->
+    <section
+      id="hero"
+      class="relative flex min-h-screen items-center overflow-hidden pb-16 pt-28 sm:pt-32"
+    >
+      <!-- Subtle Cyber Grid & Animated Particle Canvas -->
+      <div class="cyber-grid-bg pointer-events-none absolute inset-0 z-0" aria-hidden="true"></div>
+      <canvas
+        id="hero-particles"
+        class="pointer-events-none absolute inset-0 z-0 h-full w-full opacity-75"
+        aria-hidden="true"
+      ></canvas>
+
+      <!-- Ambient Neon Orbs -->
+      <div
+        class="ambient-orb -left-24 top-1/4 h-72 w-72 bg-cyan-500/20 sm:h-96 sm:w-96"
+        aria-hidden="true"
+      ></div>
+      <div
+        class="ambient-orb -right-24 bottom-12 h-72 w-72 bg-purple-600/20 sm:h-96 sm:w-96"
+        aria-hidden="true"
+      ></div>
+
+      <div class="relative z-10 mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="grid items-center gap-12 lg:grid-cols-12 lg:gap-10">
+          <!-- Hero Left Column -->
+          <div class="lg:col-span-7">
+            <!-- Status Badge -->
+            <div
+              class="hero-stagger mb-6 inline-flex items-center gap-2.5 rounded-full border border-cyan-400/25 bg-slate-900/75 px-4 py-1.5 text-xs font-medium text-cyan-300 backdrop-blur-md sm:text-sm"
+            >
+              <span class="status-dot h-2 w-2 rounded-full bg-cyan-400" aria-hidden="true"></span>
+              <span>Available for Custom Web &amp; Automation Projects</span>
+            </div>
+
+            <!-- Developer Name -->
+            <p class="hero-stagger mb-3 font-mono text-sm font-medium uppercase tracking-[0.2em] text-purple-300 sm:text-base">
+              Md. Rahique Shahrier
+            </p>
+
+            <!-- Primary Headline -->
+            <h1
+              class="hero-stagger font-display text-4xl font-bold leading-[1.1] tracking-tight text-white sm:text-5xl lg:text-6xl"
+            >
+              <span class="text-gradient-cyber">Custom Web Developer</span>
+              <span class="block text-slate-100">&amp; Automation Specialist</span>
+            </h1>
+
+            <!-- Sub-headline -->
+            <p class="hero-stagger mt-6 max-w-2xl text-base leading-relaxed text-slate-300 sm:text-lg lg:text-xl">
+              I build robust digital solutions, seamless API integrations, and automated workflows.
+            </p>
+
+            <!-- CTA Group -->
+            <div class="hero-stagger mt-9 flex flex-wrap items-center gap-4">
+              <a
+                href="#portfolio"
+                class="btn-neon-primary inline-flex items-center gap-2.5 rounded-xl px-7 py-3.5 text-sm font-bold tracking-wide sm:text-base"
+              >
+                <span>View My Work</span>
+                <i class="fa-solid fa-arrow-down text-xs" aria-hidden="true"></i>
+              </a>
+
+              <a
+                href="https://github.com/Keegan5055"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn-cyber-ghost inline-flex items-center gap-2.5 rounded-xl px-6 py-3.5 text-sm font-semibold text-slate-100 sm:text-base"
+              >
+                <i class="fa-brands fa-github text-lg text-cyan-300" aria-hidden="true"></i>
+                <span>GitHub</span>
+                <i class="fa-solid fa-arrow-up-right-from-square text-xs text-slate-400" aria-hidden="true"></i>
+              </a>
+            </div>
+
+            <!-- Quick Engineering Highlights -->
+            <div class="hero-stagger mt-10 flex flex-wrap items-center gap-x-8 gap-y-3 border-t border-slate-800/80 pt-6 text-xs text-slate-400 sm:text-sm">
+              <div class="flex items-center gap-2">
+                <i class="fa-solid fa-code text-cyan-400" aria-hidden="true"></i>
+                <span>Zero-Template Custom Code</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <i class="fa-solid fa-plug text-purple-400" aria-hidden="true"></i>
+                <span>End-to-End API Architecture</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <i class="fa-solid fa-robot text-cyan-400" aria-hidden="true"></i>
+                <span>24/7 Automated Pipelines</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hero Right Column: Futuristic Code & System Architecture Card -->
+          <div class="hero-stagger lg:col-span-5">
+            <div class="glass-card overflow-hidden rounded-2xl border border-cyan-400/20 p-1 shadow-2xl">
+              <div class="rounded-xl bg-[#070b14]/95 p-5 sm:p-6">
+                <!-- Terminal Header -->
+                <div class="mb-4 flex items-center justify-between border-b border-slate-800/80 pb-3">
+                  <div class="flex items-center gap-2">
+                    <span class="h-3 w-3 rounded-full bg-rose-500/80"></span>
+                    <span class="h-3 w-3 rounded-full bg-amber-400/80"></span>
+                    <span class="h-3 w-3 rounded-full bg-emerald-400/80"></span>
+                    <span class="ml-2 font-mono text-xs text-slate-400">workflow.engine.js</span>
+                  </div>
+                  <span class="rounded-md border border-emerald-400/30 bg-emerald-400/10 px-2 py-0.5 font-mono text-[11px] text-emerald-300">
+                    ONLINE
+                  </span>
+                </div>
+
+                <!-- Code Snippet -->
+                <pre class="overflow-x-auto font-mono text-xs leading-relaxed text-slate-300 sm:text-[13px]"><code><span class="text-purple-400">const</span> <span class="text-cyan-300">engineer</span> = {
+  <span class="text-slate-400">name:</span> <span class="text-emerald-300">'Md. Rahique Shahrier'</span>,
+  <span class="text-slate-400">approach:</span> <span class="text-emerald-300">'Clean Custom Architecture'</span>,
+  <span class="text-slate-400">core:</span> [<span class="text-amber-300">'JavaScript'</span>, <span class="text-amber-300">'Node.js'</span>, <span class="text-amber-300">'APIs'</span>],
+  <span class="text-slate-400">automation:</span> <span class="text-cyan-400">true</span>
+};
+
+<span class="text-purple-400">async function</span> <span class="text-cyan-300">deploySolution</span>(<span class="text-amber-200">clientGoal</span>) {
+  <span class="text-purple-400">const</span> architecture = <span class="text-purple-400">await</span> <span class="text-cyan-300">designCustomSystem</span>(clientGoal);
+  <span class="text-purple-400">return</span> <span class="text-cyan-300">automateAndScale</span>(architecture);
+}</code></pre>
+
+                <!-- Telemetry Footer -->
+                <div class="mt-5 grid grid-cols-3 gap-3 border-t border-slate-800/80 pt-4 text-center">
+                  <div class="rounded-lg bg-slate-900/80 px-2 py-2.5">
+                    <p class="font-display text-lg font-bold text-cyan-300">100%</p>
+                    <p class="text-[11px] text-slate-400">Custom Built</p>
+                  </div>
+                  <div class="rounded-lg bg-slate-900/80 px-2 py-2.5">
+                    <p class="font-display text-lg font-bold text-purple-300">API</p>
+                    <p class="text-[11px] text-slate-400">First Design</p>
+                  </div>
+                  <div class="rounded-lg bg-slate-900/80 px-2 py-2.5">
+                    <p class="font-display text-lg font-bold text-emerald-300">99.9%</p>
+                    <p class="text-[11px] text-slate-400">Workflow Reliability</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         3. ABOUT ME SECTION
+         =================================================================== -->
+    <section id="about" class="relative py-20 sm:py-28">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="grid items-start gap-12 lg:grid-cols-12">
+          <!-- Section Narrative -->
+          <div class="reveal-up lg:col-span-6">
+            <div class="mb-4 inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.2em] text-cyan-400">
+              <span class="h-px w-8 bg-cyan-400/70" aria-hidden="true"></span>
+              <span>01 // About Me</span>
+            </div>
+            <h2 class="font-display text-3xl font-bold tracking-tight text-white sm:text-4xl">
+              Beyond Basic Templates.
+              <span class="text-gradient-cyber block">Engineered for Scale.</span>
+            </h2>
+            <p class="mt-6 text-base leading-relaxed text-slate-300 sm:text-lg">
+              I don&rsquo;t rely on bloated page builders or cookie-cutter templates. As a developer and automation
+              specialist, I write clean, maintainable code from the ground up—designing custom architectures
+              tailored to your exact business logic.
+            </p>
+            <p class="mt-4 text-base leading-relaxed text-slate-400">
+              Whether you need a high-converting web interface, a resilient Node.js backend, or an automated
+              pipeline that eliminates hours of manual work every day, I deliver production-ready applications
+              built for speed, security, and long-term scalability.
+            </p>
+
+            <div class="mt-8 flex flex-wrap gap-4">
+              <a
+                href="#contact"
+                class="btn-cyber-ghost inline-flex items-center gap-2 rounded-xl px-5 py-3 text-sm font-semibold text-cyan-300"
+              >
+                <span>Discuss Your Architecture</span>
+                <i class="fa-solid fa-arrow-right text-xs" aria-hidden="true"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Engineering Pillars Grid -->
+          <div class="grid gap-4 sm:grid-cols-2 lg:col-span-6">
+            <article class="reveal-up glass-card rounded-2xl p-6">
+              <div class="mb-4 flex h-11 w-11 items-center justify-center rounded-xl border border-cyan-400/30 bg-cyan-400/10 text-cyan-300">
+                <i class="fa-solid fa-layer-group text-lg" aria-hidden="true"></i>
+              </div>
+              <h3 class="font-display text-lg font-semibold text-white">Custom Architectures</h3>
+              <p class="mt-2 text-sm leading-relaxed text-slate-400">
+                Modular, decoupled codebases engineered specifically for your product&rsquo;s constraints—never
+                forced into rigid themes.
+              </p>
+            </article>
+
+            <article class="reveal-up glass-card rounded-2xl p-6">
+              <div class="mb-4 flex h-11 w-11 items-center justify-center rounded-xl border border-purple-400/30 bg-purple-400/10 text-purple-300">
+                <i class="fa-solid fa-network-wired text-lg" aria-hidden="true"></i>
+              </div>
+              <h3 class="font-display text-lg font-semibold text-white">Seamless Integrations</h3>
+              <p class="mt-2 text-sm leading-relaxed text-slate-400">
+                Connecting CRMs, payment gateways, webhooks, and external REST/GraphQL APIs with fault-tolerant
+                error handling.
+              </p>
+            </article>
+
+            <article class="reveal-up glass-card rounded-2xl p-6">
+              <div class="mb-4 flex h-11 w-11 items-center justify-center rounded-xl border border-cyan-400/30 bg-cyan-400/10 text-cyan-300">
+                <i class="fa-solid fa-gears text-lg" aria-hidden="true"></i>
+              </div>
+              <h3 class="font-display text-lg font-semibold text-white">Intelligent Automation</h3>
+              <p class="mt-2 text-sm leading-relaxed text-slate-400">
+                Turning repetitive multi-step workflows into reliable, scheduled or event-driven pipelines that run
+                around the clock.
+              </p>
+            </article>
+
+            <article class="reveal-up glass-card rounded-2xl p-6">
+              <div class="mb-4 flex h-11 w-11 items-center justify-center rounded-xl border border-purple-400/30 bg-purple-400/10 text-purple-300">
+                <i class="fa-solid fa-gauge-high text-lg" aria-hidden="true"></i>
+              </div>
+              <h3 class="font-display text-lg font-semibold text-white">Clean &amp; Scalable Code</h3>
+              <p class="mt-2 text-sm leading-relaxed text-slate-400">
+                Readable, documented, performance-tuned JavaScript and Node.js systems ready to grow alongside your
+                user base.
+              </p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         4. SKILLS MATRIX SECTION
+         =================================================================== -->
+    <section id="skills" class="relative py-20 sm:py-28">
+      <div
+        class="ambient-orb left-1/2 top-1/2 h-80 w-80 -translate-x-1/2 -translate-y-1/2 bg-indigo-600/15"
+        aria-hidden="true"
+      ></div>
+
+      <div class="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <!-- Section Header -->
+        <div class="reveal-up mx-auto max-w-2xl text-center">
+          <div class="mb-4 inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.2em] text-cyan-400">
+            <span>02 // Technical Capabilities</span>
+          </div>
+          <h2 class="font-display text-3xl font-bold tracking-tight text-white sm:text-4xl">
+            Core Engineering <span class="text-gradient-cyber">Skills Matrix</span>
+          </h2>
+          <p class="mt-4 text-base text-slate-400">
+            A focused, production-tested stack built for modern web applications, API ecosystems, and autonomous
+            workflows.
+          </p>
+        </div>
+
+        <!-- 5 Core Skills Matrix Cards -->
+        <div class="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-6">
+          <!-- Skill 1: JavaScript -->
+          <article class="reveal-up glass-card rounded-2xl p-6 lg:col-span-2">
+            <div class="flex items-start justify-between">
+              <div class="flex h-12 w-12 items-center justify-center rounded-xl border border-amber-400/30 bg-amber-400/10 text-amber-300">
+                <i class="fa-brands fa-js text-2xl" aria-hidden="true"></i>
+              </div>
+              <span class="rounded-full border border-slate-700/80 bg-slate-900/80 px-2.5 py-1 font-mono text-[11px] text-cyan-300">
+                Core Language
+              </span>
+            </div>
+            <h3 class="mt-5 font-display text-xl font-semibold text-white">JavaScript</h3>
+            <p class="mt-2 text-sm leading-relaxed text-slate-400">
+              Modern ES6+, asynchronous concurrency, state management, DOM optimization, and modular browser/runtime
+              architecture.
+            </p>
+            <div class="mt-5 flex flex-wrap gap-2">
+              <span class="rounded-md bg-slate-800/80 px-2.5 py-1 font-mono text-xs text-slate-300">ES6+</span>
+              <span class="rounded-md bg-slate-800/80 px-2.5 py-1 font-mono text-xs text-slate-300">Async/Await</span>
+              <span class="rounded-md bg-slate-800/80 px-2.5 py-1 font-mono text-xs text-slate-300">DOM / Web APIs</span>
+            </div>
+          </article>
+
+          <!-- Skill 2: Node.js -->
+          <article class="reveal-up glass-card rounded-2xl p-6 lg:col-span-2">
+            <div class="flex items-start justify-between">
+              <div class="flex h-12 w-12 items-center justify-center rounded-xl border border-emerald-400/30 bg-emerald-400/10 text-emerald-300">
+                <i class="fa-brands fa-node-js text-2xl" aria-hidden="true"></i>
+              </div>
+              <span class="rounded-full border border-slate-700/80 bg-slate-900/80 px-2.5 py-1 font-mono text-[11px] text-emerald-300">
+                Backend Runtime
+              </span>
+            </div>
+            <h3 class="mt-5 font-display text-xl font-semibold text-white">Node.js</h3>
+            <p class="mt-2 text-sm leading-relaxed text-slate-400">
+              Scalable REST services, background job workers, stream processing, CLI tooling, and secure server-side
+              business logic.
+            </p>
+            <div class="mt-5 flex flex-wrap gap-2">
+              <span class="rounded-md bg-slate-800/80 px-2.5 py-1 font-mono text-xs text-slate-300">Express / Fastify</span>
+              <span class="rounded-md bg-slate-800/80 px-2.5 py-1 font-mono text-xs text-slate-300">Workers</span>
+              <span class="rounded-md bg-slate-800/80 px-2.5 py-1 font-mono text-xs text-slate-300">Queues</span>
+            </div>
+          </article>
+
+          <!-- Skill 3: Custom API Integration -->
+          <article class="reveal-up glass-card rounded-2xl p-6 lg:col-span-2">
+            <div class="flex items-start justify-between">
+              <div class="flex h-12 w-12 items-center justify-center rounded-xl border border-cyan-400/30 bg-cyan-400/10 text-cyan-300">
+                <i class="fa-solid fa-plug-circle-bolt text-xl" aria-hidden="true"></i>
+              </div>
+              <span class="rounded-full border border-slate-700/80 bg-slate-900/80 px-2.5 py-1 font-mono text-[11px] text-cyan-300">
+                Connectivity
+              </span>
+            </div>
+            <h3 class="mt-5 font-display text-xl font-semibold text-white">Custom API Integration</h3>
+            <p class="mt-2 text-sm leading-relaxed text-slate-400">
+              Designing unified middleware connecting payment gateways, SaaS platforms, OAuth2 flows, and real-time
+              webhooks.
+            </p>
+            <div class="mt-5 flex flex-wrap gap-2">
+              <span class="rounded-md bg-slate-800/80 px-2.5 py-1 font-mono text-xs text-slate-300">REST &amp; JSON</span>
+              <span class="rounded-md bg-slate-800/80 px-2.5 py-1 font-mono text-xs text-slate-300">Webhooks</span>
+              <span class="rounded-md bg-slate-800/80 px-2.5 py-1 font-mono text-xs text-slate-300">OAuth2 / JWT</span>
+            </div>
+          </article>
+
+          <!-- Skill 4: Web Automation -->
+          <article class="reveal-up glass-card rounded-2xl p-6 lg:col-span-3">
+            <div class="flex items-start justify-between">
+              <div class="flex h-12 w-12 items-center justify-center rounded-xl border border-purple-400/30 bg-purple-400/10 text-purple-300">
+                <i class="fa-solid fa-robot text-xl" aria-hidden="true"></i>
+              </div>
+              <span class="rounded-full border border-slate-700/80 bg-slate-900/80 px-2.5 py-1 font-mono text-[11px] text-purple-300">
+                Workflow Engine
+              </span>
+            </div>
+            <h3 class="mt-5 font-display text-xl font-semibold text-white">Web Automation</h3>
+            <p class="mt-2 text-sm leading-relaxed text-slate-400">
+              Headless browser orchestration, automated data extraction, scheduled media/ETL pipelines, and
+              zero-touch operational bots with automatic retries and alerting.
+            </p>
+            <div class="mt-5 flex flex-wrap gap-2">
+              <span class="rounded-md bg-slate-800/80 px-2.5 py-1 font-mono text-xs text-slate-300">Puppeteer / Playwright</span>
+              <span class="rounded-md bg-slate-800/80 px-2.5 py-1 font-mono text-xs text-slate-300">Cron Pipelines</span>
+              <span class="rounded-md bg-slate-800/80 px-2.5 py-1 font-mono text-xs text-slate-300">Data Scraping &amp; Sync</span>
+            </div>
+          </article>
+
+          <!-- Skill 5: Responsive UI Design -->
+          <article class="reveal-up glass-card rounded-2xl p-6 lg:col-span-3">
+            <div class="flex items-start justify-between">
+              <div class="flex h-12 w-12 items-center justify-center rounded-xl border border-sky-400/30 bg-sky-400/10 text-sky-300">
+                <i class="fa-solid fa-wand-magic-sparkles text-xl" aria-hidden="true"></i>
+              </div>
+              <span class="rounded-full border border-slate-700/80 bg-slate-900/80 px-2.5 py-1 font-mono text-[11px] text-sky-300">
+                Frontend Craft
+              </span>
+            </div>
+            <h3 class="mt-5 font-display text-xl font-semibold text-white">Responsive UI Design</h3>
+            <p class="mt-2 text-sm leading-relaxed text-slate-400">
+              High-converting, mobile-first interfaces built with semantic HTML5, Tailwind CSS, GSAP motion
+              choreography, and accessible UX standards across every viewport.
+            </p>
+            <div class="mt-5 flex flex-wrap gap-2">
+              <span class="rounded-md bg-slate-800/80 px-2.5 py-1 font-mono text-xs text-slate-300">HTML5 &amp; CSS3</span>
+              <span class="rounded-md bg-slate-800/80 px-2.5 py-1 font-mono text-xs text-slate-300">Tailwind CSS</span>
+              <span class="rounded-md bg-slate-800/80 px-2.5 py-1 font-mono text-xs text-slate-300">GSAP Motion</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         5. PORTFOLIO / PROJECTS SECTION
+         =================================================================== -->
+    <section id="portfolio" class="relative py-20 sm:py-28">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <!-- Section Header -->
+        <div class="reveal-up flex flex-col justify-between gap-6 md:flex-row md:items-end">
+          <div class="max-w-2xl">
+            <div class="mb-4 inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.2em] text-cyan-400">
+              <span class="h-px w-8 bg-cyan-400/70" aria-hidden="true"></span>
+              <span>03 // Selected Work</span>
+            </div>
+            <h2 class="font-display text-3xl font-bold tracking-tight text-white sm:text-4xl">
+              Featured <span class="text-gradient-cyber">Systems &amp; Projects</span>
+            </h2>
+            <p class="mt-4 text-base text-slate-400">
+              Custom-built platforms, API engines, and automation pipelines engineered to solve real operational
+              bottlenecks.
+            </p>
+          </div>
+          <a
+            href="https://github.com/Keegan5055"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-cyber-ghost inline-flex w-fit items-center gap-2 rounded-xl px-5 py-2.5 text-sm font-semibold text-slate-200"
+          >
+            <i class="fa-brands fa-github text-cyan-300" aria-hidden="true"></i>
+            <span>Explore All on GitHub</span>
+          </a>
+        </div>
+
+        <!-- 4-Card Project Grid -->
+        <div class="mt-12 grid gap-8 md:grid-cols-2">
+          <!-- PROJECT 1: Automated Video Pipeline -->
+          <article class="reveal-up project-card glass-card flex flex-col overflow-hidden rounded-2xl">
+            <!-- Placeholder Image / Futuristic Preview Space -->
+            <!-- Replace the SVG/mockup block below with an <img src="assets/project-1.png" ...> whenever you add screenshots -->
+            <div class="project-media-wrapper relative aspect-video overflow-hidden border-b border-slate-800/80 bg-[#080d1a]">
+              <div class="project-mockup flex h-full w-full flex-col justify-between bg-gradient-to-br from-cyan-950/60 via-[#091122] to-purple-950/60 p-5">
+                <div class="flex items-center justify-between">
+                  <span class="rounded-md border border-cyan-400/30 bg-cyan-400/10 px-2.5 py-1 font-mono text-[11px] text-cyan-300">
+                    PIPELINE // ACTIVE
+                  </span>
+                  <span class="font-mono text-[11px] text-slate-400">16:9 Preview Placeholder</span>
+                </div>
+                <div class="my-auto flex items-center justify-center gap-3 sm:gap-5">
+                  <div class="flex flex-col items-center rounded-xl border border-slate-700/70 bg-slate-900/90 px-3 py-2.5">
+                    <i class="fa-solid fa-rss text-cyan-300" aria-hidden="true"></i>
+                    <span class="mt-1 font-mono text-[10px] text-slate-300">Ingest</span>
+                  </div>
+                  <i class="fa-solid fa-arrow-right text-xs text-cyan-400" aria-hidden="true"></i>
+                  <div class="flex flex-col items-center rounded-xl border border-purple-400/40 bg-purple-950/50 px-3 py-2.5 shadow-[0_0_20px_-6px_rgba(168,85,247,0.6)]">
+                    <i class="fa-solid fa-film text-purple-300" aria-hidden="true"></i>
+                    <span class="mt-1 font-mono text-[10px] text-slate-200">FFmpeg Render</span>
+                  </div>
+                  <i class="fa-solid fa-arrow-right text-xs text-purple-400" aria-hidden="true"></i>
+                  <div class="flex flex-col items-center rounded-xl border border-slate-700/70 bg-slate-900/90 px-3 py-2.5">
+                    <i class="fa-solid fa-cloud-arrow-up text-emerald-300" aria-hidden="true"></i>
+                    <span class="mt-1 font-mono text-[10px] text-slate-300">Publish</span>
+                  </div>
+                </div>
+                <div class="h-1.5 w-full overflow-hidden rounded-full bg-slate-800">
+                  <div class="h-full w-3/4 rounded-full bg-gradient-to-r from-cyan-400 to-purple-500"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="flex flex-1 flex-col p-6 sm:p-7">
+              <h3 class="font-display text-xl font-bold text-white">Automated Video Pipeline</h3>
+              <p class="mt-2.5 flex-1 text-sm leading-relaxed text-slate-400">
+                End-to-end media automation system that fetches dynamic assets, generates subtitles, renders
+                multi-format videos headlessly via Node.js &amp; FFmpeg, and publishes them automatically via API.
+              </p>
+
+              <!-- Tech Stack Tags -->
+              <div class="mt-5 flex flex-wrap gap-2">
+                <span class="rounded-full border border-cyan-400/25 bg-cyan-400/10 px-3 py-1 font-mono text-xs text-cyan-300">
+                  Node.js
+                </span>
+                <span class="rounded-full border border-purple-400/25 bg-purple-400/10 px-3 py-1 font-mono text-xs text-purple-300">
+                  FFmpeg
+                </span>
+                <span class="rounded-full border border-slate-700 bg-slate-800/80 px-3 py-1 font-mono text-xs text-slate-300">
+                  REST APIs
+                </span>
+                <span class="rounded-full border border-slate-700 bg-slate-800/80 px-3 py-1 font-mono text-xs text-slate-300">
+                  Job Queue
+                </span>
+              </div>
+
+              <!-- Action Buttons -->
+              <div class="mt-6 flex flex-wrap items-center gap-3 border-t border-slate-800/80 pt-5">
+                <button
+                  type="button"
+                  data-project-demo="video-pipeline"
+                  class="btn-neon-primary inline-flex flex-1 items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold"
+                >
+                  <i class="fa-solid fa-play text-xs" aria-hidden="true"></i>
+                  <span>Live Demo</span>
+                </button>
+                <a
+                  href="https://github.com/Keegan5055"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="btn-cyber-ghost inline-flex flex-1 items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold text-slate-200"
+                >
+                  <i class="fa-brands fa-github text-sm" aria-hidden="true"></i>
+                  <span>Source Code</span>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- PROJECT 2: Custom E-Commerce API -->
+          <article class="reveal-up project-card glass-card flex flex-col overflow-hidden rounded-2xl">
+            <div class="project-media-wrapper relative aspect-video overflow-hidden border-b border-slate-800/80 bg-[#080d1a]">
+              <div class="project-mockup flex h-full w-full flex-col justify-between bg-gradient-to-br from-purple-950/60 via-[#091122] to-indigo-950/60 p-5">
+                <div class="flex items-center justify-between">
+                  <span class="rounded-md border border-purple-400/30 bg-purple-400/10 px-2.5 py-1 font-mono text-[11px] text-purple-300">
+                    API // v2.4 GATEWAY
+                  </span>
+                  <span class="font-mono text-[11px] text-emerald-300">200 OK &bull; 38ms</span>
+                </div>
+                <div class="my-auto space-y-2 rounded-xl border border-slate-700/70 bg-slate-950/80 p-3.5 font-mono text-[11px] text-slate-300">
+                  <div class="flex items-center justify-between">
+                    <span class="text-cyan-300">POST /api/v2/checkout/session</span>
+                    <span class="text-emerald-400">VERIFIED</span>
+                  </div>
+                  <div class="flex items-center justify-between text-slate-400">
+                    <span>Sync: Inventory &harr; Stripe Webhook</span>
+                    <span>JWT Auth</span>
+                  </div>
+                </div>
+                <div class="flex items-center justify-between font-mono text-[11px] text-slate-400">
+                  <span>16:9 Preview Placeholder</span>
+                  <span>Rate-Limited &amp; Cached</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="flex flex-1 flex-col p-6 sm:p-7">
+              <h3 class="font-display text-xl font-bold text-white">Custom E-Commerce API</h3>
+              <p class="mt-2.5 flex-1 text-sm leading-relaxed text-slate-400">
+                High-throughput headless commerce backend featuring JWT authentication, real-time inventory locking,
+                idempotent payment webhooks, and automated order fulfillment notifications.
+              </p>
+
+              <div class="mt-5 flex flex-wrap gap-2">
+                <span class="rounded-full border border-cyan-400/25 bg-cyan-400/10 px-3 py-1 font-mono text-xs text-cyan-300">
+                  JavaScript
+                </span>
+                <span class="rounded-full border border-emerald-400/25 bg-emerald-400/10 px-3 py-1 font-mono text-xs text-emerald-300">
+                  Node.js
+                </span>
+                <span class="rounded-full border border-purple-400/25 bg-purple-400/10 px-3 py-1 font-mono text-xs text-purple-300">
+                  Stripe Webhooks
+                </span>
+                <span class="rounded-full border border-slate-700 bg-slate-800/80 px-3 py-1 font-mono text-xs text-slate-300">
+                  REST Architecture
+                </span>
+              </div>
+
+              <div class="mt-6 flex flex-wrap items-center gap-3 border-t border-slate-800/80 pt-5">
+                <button
+                  type="button"
+                  data-project-demo="ecommerce-api"
+                  class="btn-neon-primary inline-flex flex-1 items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold"
+                >
+                  <i class="fa-solid fa-play text-xs" aria-hidden="true"></i>
+                  <span>Live Demo</span>
+                </button>
+                <a
+                  href="https://github.com/Keegan5055"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="btn-cyber-ghost inline-flex flex-1 items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold text-slate-200"
+                >
+                  <i class="fa-brands fa-github text-sm" aria-hidden="true"></i>
+                  <span>Source Code</span>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- PROJECT 3: Multi-Platform Workflow Orchestrator -->
+          <article class="reveal-up project-card glass-card flex flex-col overflow-hidden rounded-2xl">
+            <div class="project-media-wrapper relative aspect-video overflow-hidden border-b border-slate-800/80 bg-[#080d1a]">
+              <div class="project-mockup flex h-full w-full flex-col justify-between bg-gradient-to-br from-sky-950/60 via-[#091122] to-cyan-950/50 p-5">
+                <div class="flex items-center justify-between">
+                  <span class="rounded-md border border-sky-400/30 bg-sky-400/10 px-2.5 py-1 font-mono text-[11px] text-sky-300">
+                    BOT // ORCHESTRATOR
+                  </span>
+                  <span class="font-mono text-[11px] text-slate-400">16:9 Preview Placeholder</span>
+                </div>
+                <div class="my-auto grid grid-cols-3 gap-2.5">
+                  <div class="rounded-lg border border-slate-700/70 bg-slate-900/90 p-2.5 text-center">
+                    <i class="fa-solid fa-spider text-cyan-300" aria-hidden="true"></i>
+                    <p class="mt-1 font-mono text-[10px] text-slate-300">Scraper</p>
+                  </div>
+                  <div class="rounded-lg border border-cyan-400/40 bg-cyan-950/50 p-2.5 text-center">
+                    <i class="fa-solid fa-filter text-purple-300" aria-hidden="true"></i>
+                    <p class="mt-1 font-mono text-[10px] text-slate-200">Transform</p>
+                  </div>
+                  <div class="rounded-lg border border-slate-700/70 bg-slate-900/90 p-2.5 text-center">
+                    <i class="fa-solid fa-bell text-emerald-300" aria-hidden="true"></i>
+                    <p class="mt-1 font-mono text-[10px] text-slate-300">CRM Sync</p>
+                  </div>
+                </div>
+                <div class="flex items-center justify-between font-mono text-[11px] text-slate-400">
+                  <span>Zero-Touch Execution</span>
+                  <span class="text-cyan-300">12.4k Tasks / Day</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="flex flex-1 flex-col p-6 sm:p-7">
+              <h3 class="font-display text-xl font-bold text-white">SaaS Workflow &amp; Scraper Engine</h3>
+              <p class="mt-2.5 flex-1 text-sm leading-relaxed text-slate-400">
+                Automated browser &amp; API orchestration suite that monitors target portals, normalizes structured
+                datasets, and pushes enriched leads directly into Slack, Notion, and CRM endpoints.
+              </p>
+
+              <div class="mt-5 flex flex-wrap gap-2">
+                <span class="rounded-full border border-purple-400/25 bg-purple-400/10 px-3 py-1 font-mono text-xs text-purple-300">
+                  Playwright
+                </span>
+                <span class="rounded-full border border-cyan-400/25 bg-cyan-400/10 px-3 py-1 font-mono text-xs text-cyan-300">
+                  Node.js
+                </span>
+                <span class="rounded-full border border-slate-700 bg-slate-800/80 px-3 py-1 font-mono text-xs text-slate-300">
+                  Webhooks
+                </span>
+                <span class="rounded-full border border-slate-700 bg-slate-800/80 px-3 py-1 font-mono text-xs text-slate-300">
+                  Cron Scheduler
+                </span>
+              </div>
+
+              <div class="mt-6 flex flex-wrap items-center gap-3 border-t border-slate-800/80 pt-5">
+                <button
+                  type="button"
+                  data-project-demo="workflow-engine"
+                  class="btn-neon-primary inline-flex flex-1 items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold"
+                >
+                  <i class="fa-solid fa-play text-xs" aria-hidden="true"></i>
+                  <span>Live Demo</span>
+                </button>
+                <a
+                  href="https://github.com/Keegan5055"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="btn-cyber-ghost inline-flex flex-1 items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold text-slate-200"
+                >
+                  <i class="fa-brands fa-github text-sm" aria-hidden="true"></i>
+                  <span>Source Code</span>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- PROJECT 4: Real-Time Operations & Analytics UI -->
+          <article class="reveal-up project-card glass-card flex flex-col overflow-hidden rounded-2xl">
+            <div class="project-media-wrapper relative aspect-video overflow-hidden border-b border-slate-800/80 bg-[#080d1a]">
+              <div class="project-mockup flex h-full w-full flex-col justify-between bg-gradient-to-br from-indigo-950/60 via-[#091122] to-slate-900 p-5">
+                <div class="flex items-center justify-between">
+                  <span class="rounded-md border border-indigo-400/30 bg-indigo-400/10 px-2.5 py-1 font-mono text-[11px] text-indigo-300">
+                    UI // TELEMETRY HUB
+                  </span>
+                  <span class="font-mono text-[11px] text-slate-400">16:9 Preview Placeholder</span>
+                </div>
+                <div class="my-auto flex items-end gap-2 px-4 pt-4">
+                  <div class="h-8 w-full rounded-t bg-cyan-500/30"></div>
+                  <div class="h-14 w-full rounded-t bg-cyan-400/50"></div>
+                  <div class="h-11 w-full rounded-t bg-purple-500/40"></div>
+                  <div class="h-20 w-full rounded-t bg-gradient-to-t from-cyan-400/60 to-purple-500/80"></div>
+                  <div class="h-16 w-full rounded-t bg-cyan-400/60"></div>
+                </div>
+                <div class="flex items-center justify-between font-mono text-[11px] text-slate-400">
+                  <span>Responsive Glassmorphic UI</span>
+                  <span class="text-emerald-300">60 FPS GSAP</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="flex flex-1 flex-col p-6 sm:p-7">
+              <h3 class="font-display text-xl font-bold text-white">Real-Time Telemetry Dashboard</h3>
+              <p class="mt-2.5 flex-1 text-sm leading-relaxed text-slate-400">
+                Responsive single-page operations command center displaying live API latency, background job health,
+                and interactive analytics with custom Tailwind UI components and GSAP transitions.
+              </p>
+
+              <div class="mt-5 flex flex-wrap gap-2">
+                <span class="rounded-full border border-cyan-400/25 bg-cyan-400/10 px-3 py-1 font-mono text-xs text-cyan-300">
+                  HTML5 &amp; CSS3
+                </span>
+                <span class="rounded-full border border-sky-400/25 bg-sky-400/10 px-3 py-1 font-mono text-xs text-sky-300">
+                  Tailwind CSS
+                </span>
+                <span class="rounded-full border border-purple-400/25 bg-purple-400/10 px-3 py-1 font-mono text-xs text-purple-300">
+                  GSAP
+                </span>
+                <span class="rounded-full border border-slate-700 bg-slate-800/80 px-3 py-1 font-mono text-xs text-slate-300">
+                  Vanilla JS
+                </span>
+              </div>
+
+              <div class="mt-6 flex flex-wrap items-center gap-3 border-t border-slate-800/80 pt-5">
+                <button
+                  type="button"
+                  data-project-demo="telemetry-ui"
+                  class="btn-neon-primary inline-flex flex-1 items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold"
+                >
+                  <i class="fa-solid fa-play text-xs" aria-hidden="true"></i>
+                  <span>Live Demo</span>
+                </button>
+                <a
+                  href="https://github.com/Keegan5055"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="btn-cyber-ghost inline-flex flex-1 items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold text-slate-200"
+                >
+                  <i class="fa-brands fa-github text-sm" aria-hidden="true"></i>
+                  <span>Source Code</span>
+                </a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         6. CONTACT SECTION
+         =================================================================== -->
+    <section id="contact" class="relative py-20 sm:py-28">
+      <div
+        class="ambient-orb -bottom-16 right-12 h-72 w-72 bg-cyan-500/15"
+        aria-hidden="true"
+      ></div>
+
+      <div class="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="grid gap-10 lg:grid-cols-12 lg:gap-12">
+          <!-- Left Info & Direct Links -->
+          <div class="reveal-up lg:col-span-5">
+            <div class="mb-4 inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.2em] text-cyan-400">
+              <span class="h-px w-8 bg-cyan-400/70" aria-hidden="true"></span>
+              <span>04 // Let&rsquo;s Build</span>
+            </div>
+            <h2 class="font-display text-3xl font-bold tracking-tight text-white sm:text-4xl">
+              Ready to Automate &amp;
+              <span class="text-gradient-cyber block">Launch Something Custom?</span>
+            </h2>
+            <p class="mt-4 text-base leading-relaxed text-slate-400">
+              Have a custom web application, API integration, or workflow automation challenge in mind? Send a
+              message directly or reach out through my developer profiles.
+            </p>
+
+            <!-- Direct Channels -->
+            <div class="mt-8 space-y-4">
+              <!-- Direct Mailto Link (Update email address before deploying) -->
+              <a
+                href="mailto:contact@rahiqueshahrier.dev?subject=Project%20Inquiry%20-%20Portfolio"
+                class="glass-card flex items-center gap-4 rounded-2xl p-4 transition-colors hover:border-cyan-400/40"
+              >
+                <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-cyan-400/30 bg-cyan-400/10 text-cyan-300">
+                  <i class="fa-solid fa-envelope text-lg" aria-hidden="true"></i>
+                </div>
+                <div class="min-w-0">
+                  <p class="text-xs font-medium uppercase tracking-wider text-slate-400">Direct Email</p>
+                  <p class="truncate font-mono text-sm font-semibold text-white">contact@rahiqueshahrier.dev</p>
+                </div>
+                <i class="fa-solid fa-arrow-up-right-from-square ml-auto text-xs text-slate-400" aria-hidden="true"></i>
+              </a>
+
+              <!-- GitHub Profile -->
+              <a
+                href="https://github.com/Keegan5055"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="glass-card flex items-center gap-4 rounded-2xl p-4 transition-colors hover:border-purple-400/40"
+              >
+                <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-purple-400/30 bg-purple-400/10 text-purple-300">
+                  <i class="fa-brands fa-github text-xl" aria-hidden="true"></i>
+                </div>
+                <div class="min-w-0">
+                  <p class="text-xs font-medium uppercase tracking-wider text-slate-400">GitHub</p>
+                  <p class="truncate font-mono text-sm font-semibold text-white">github.com/Keegan5055</p>
+                </div>
+                <i class="fa-solid fa-arrow-up-right-from-square ml-auto text-xs text-slate-400" aria-hidden="true"></i>
+              </a>
+
+              <!-- LaborX Profile (Update with your exact LaborX profile slug) -->
+              <a
+                href="https://laborx.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="glass-card flex items-center gap-4 rounded-2xl p-4 transition-colors hover:border-cyan-400/40"
+              >
+                <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-sky-400/30 bg-sky-400/10 text-sky-300">
+                  <i class="fa-solid fa-briefcase text-lg" aria-hidden="true"></i>
+                </div>
+                <div class="min-w-0">
+                  <p class="text-xs font-medium uppercase tracking-wider text-slate-400">Freelance Profile</p>
+                  <p class="truncate font-mono text-sm font-semibold text-white">Hire me on LaborX</p>
+                </div>
+                <i class="fa-solid fa-arrow-up-right-from-square ml-auto text-xs text-slate-400" aria-hidden="true"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Right Contact Form -->
+          <div class="reveal-up lg:col-span-7">
+            <div class="glass-card rounded-2xl p-6 sm:p-8">
+              <form id="contact-form" novalidate class="space-y-5">
+                <div class="grid gap-5 sm:grid-cols-2">
+                  <div>
+                    <label for="contact-name" class="mb-2 block text-sm font-medium text-slate-200">
+                      Your Name
+                    </label>
+                    <input
+                      id="contact-name"
+                      name="name"
+                      type="text"
+                      required
+                      autocomplete="name"
+                      placeholder="Alex Mercer"
+                      class="w-full rounded-xl border border-slate-700/80 bg-slate-950/75 px-4 py-3 text-sm text-white placeholder-slate-500 transition-colors focus:border-cyan-400 focus:outline-none"
+                    />
+                  </div>
+
+                  <div>
+                    <label for="contact-email" class="mb-2 block text-sm font-medium text-slate-200">
+                      Email Address
+                    </label>
+                    <input
+                      id="contact-email"
+                      name="email"
+                      type="email"
+                      required
+                      autocomplete="email"
+                      placeholder="alex@company.com"
+                      class="w-full rounded-xl border border-slate-700/80 bg-slate-950/75 px-4 py-3 text-sm text-white placeholder-slate-500 transition-colors focus:border-cyan-400 focus:outline-none"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label for="contact-message" class="mb-2 block text-sm font-medium text-slate-200">
+                    Project Details
+                  </label>
+                  <textarea
+                    id="contact-message"
+                    name="message"
+                    rows="5"
+                    required
+                    placeholder="Tell me about the web app, API integration, or automation workflow you want to build..."
+                    class="w-full resize-y rounded-xl border border-slate-700/80 bg-slate-950/75 px-4 py-3 text-sm text-white placeholder-slate-500 transition-colors focus:border-cyan-400 focus:outline-none"
+                  ></textarea>
+                </div>
+
+                <!-- Form Feedback Banner -->
+                <div
+                  id="form-feedback"
+                  role="status"
+                  aria-live="polite"
+                  class="hidden rounded-xl border px-4 py-3 text-sm"
+                ></div>
+
+                <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                  <button
+                    type="submit"
+                    class="btn-neon-primary inline-flex items-center justify-center gap-2.5 rounded-xl px-7 py-3.5 text-sm font-bold tracking-wide"
+                  >
+                    <span>Send Message</span>
+                    <i class="fa-solid fa-paper-plane text-xs" aria-hidden="true"></i>
+                  </button>
+                  <p class="text-xs text-slate-400">
+                    Or email directly via
+                    <a
+                      href="mailto:contact@rahiqueshahrier.dev"
+                      class="font-medium text-cyan-300 underline decoration-cyan-400/40 underline-offset-4 hover:text-cyan-200"
+                    >
+                      mailto link
+                    </a>
+                  </p>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- =====================================================================
+       7. FOOTER
+       ===================================================================== -->
+  <footer class="border-t border-slate-800/80 bg-[#04060b] py-8">
+    <div class="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-4 sm:flex-row sm:px-6 lg:px-8">
+      <p class="text-center text-sm text-slate-400">
+        &copy; <span id="current-year">2026</span>
+        <span class="font-medium text-slate-200">Md. Rahique Shahrier</span>. All rights reserved.
+      </p>
+
+      <div class="flex items-center gap-4">
+        <a
+          href="https://github.com/Keegan5055"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="GitHub Profile"
+          class="flex h-9 w-9 items-center justify-center rounded-lg border border-slate-800 bg-slate-900/70 text-slate-300 transition-colors hover:border-cyan-400/50 hover:text-cyan-300"
+        >
+          <i class="fa-brands fa-github" aria-hidden="true"></i>
+        </a>
+        <a
+          href="https://laborx.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="LaborX Profile"
+          class="flex h-9 w-9 items-center justify-center rounded-lg border border-slate-800 bg-slate-900/70 text-slate-300 transition-colors hover:border-purple-400/50 hover:text-purple-300"
+        >
+          <i class="fa-solid fa-briefcase" aria-hidden="true"></i>
+        </a>
+        <a
+          href="mailto:contact@rahiqueshahrier.dev"
+          aria-label="Send Email"
+          class="flex h-9 w-9 items-center justify-center rounded-lg border border-slate-800 bg-slate-900/70 text-slate-300 transition-colors hover:border-cyan-400/50 hover:text-cyan-300"
+        >
+          <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- =====================================================================
+       INTERACTIVE LIVE DEMO ARCHITECTURE MODAL
+       ===================================================================== -->
+  <div
+    id="demo-modal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="demo-modal-title"
+    class="modal-backdrop fixed inset-0 z-50 hidden items-center justify-center p-4"
+  >
+    <div class="glass-card w-full max-w-xl rounded-2xl border border-cyan-400/30 bg-[#080d1a] p-6 shadow-2xl sm:p-7">
+      <div class="flex items-start justify-between gap-4 border-b border-slate-800 pb-4">
+        <div>
+          <span class="font-mono text-xs uppercase tracking-wider text-cyan-400">Interactive System Preview</span>
+          <h3 id="demo-modal-title" class="mt-1 font-display text-xl font-bold text-white">Project Demo</h3>
+        </div>
+        <button
+          id="demo-modal-close"
+          type="button"
+          aria-label="Close demo preview"
+          class="flex h-9 w-9 items-center justify-center rounded-lg border border-slate-700/80 text-slate-300 transition-colors hover:border-cyan-400/50 hover:text-white"
+        >
+          <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+        </button>
+      </div>
+
+      <div id="demo-modal-body" class="mt-5 space-y-4 text-sm leading-relaxed text-slate-300"></div>
+
+      <div class="mt-6 flex flex-wrap justify-end gap-3 border-t border-slate-800 pt-4">
+        <a
+          href="https://github.com/Keegan5055"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn-cyber-ghost inline-flex items-center gap-2 rounded-xl px-4 py-2 text-sm font-semibold text-slate-200"
+        >
+          <i class="fa-brands fa-github" aria-hidden="true"></i>
+          <span>View Repositories</span>
+        </a>
+        <a
+          href="#contact"
+          id="demo-modal-hire"
+          class="btn-neon-primary inline-flex items-center gap-2 rounded-xl px-4 py-2 text-sm font-semibold"
+        >
+          <span>Request Similar Build</span>
+          <i class="fa-solid fa-arrow-right text-xs" aria-hidden="true"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- GSAP & ScrollTrigger CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <!-- Portfolio Application Script -->
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,263 @@
+/* ==========================================================================
+   Md. Rahique Shahrier — Portfolio Custom Stylesheet
+   Complementing Tailwind CSS CDN with futuristic dark-mode surfaces,
+   glows, grid backgrounds, and accessible motion fallbacks.
+   ========================================================================== */
+
+:root {
+  --bg-primary: #05070d;
+  --bg-elevated: #0b101b;
+  --surface-glass: rgba(13, 19, 33, 0.72);
+  --border-subtle: rgba(148, 163, 184, 0.14);
+  --neon-blue: #00e5ff;
+  --cyber-purple: #a855f7;
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+}
+
+/* Smooth scrolling with sticky-header offset */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5.5rem;
+  background-color: var(--bg-primary);
+  color: var(--text-main);
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-main);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, .font-display {
+  font-family: 'Space Grotesk', 'Inter', sans-serif;
+}
+
+.font-mono-code {
+  font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+/* Custom selection & scrollbar */
+::selection {
+  background: rgba(0, 229, 255, 0.28);
+  color: #ffffff;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #05070d;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, rgba(0, 229, 255, 0.45), rgba(168, 85, 247, 0.45));
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, rgba(0, 229, 255, 0.8), rgba(168, 85, 247, 0.8));
+}
+
+/* Skip to content accessibility link */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  z-index: 100;
+  padding: 0.65rem 1rem;
+  background: var(--neon-blue);
+  color: #05070d;
+  font-weight: 700;
+  border-radius: 0.5rem;
+  transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+/* Sticky Navbar States */
+.navbar-glass {
+  background: rgba(5, 7, 13, 0.45);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(148, 163, 184, 0.08);
+  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.navbar-glass.is-scrolled {
+  background: rgba(5, 7, 13, 0.86);
+  border-bottom-color: rgba(0, 229, 255, 0.18);
+  box-shadow: 0 12px 32px -12px rgba(0, 0, 0, 0.75);
+}
+
+/* Futuristic Cyber Grid & Radial Ambient Glows */
+.cyber-grid-bg {
+  background-image:
+    linear-gradient(to right, rgba(56, 189, 248, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(168, 85, 247, 0.06) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, #000 45%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, #000 45%, transparent 100%);
+}
+
+.ambient-orb {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(100px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Gradient Text Utility */
+.text-gradient-cyber {
+  background: linear-gradient(120deg, #ffffff 0%, #00e5ff 48%, #a855f7 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Glass Card & Animated Border Glow */
+.glass-card {
+  position: relative;
+  background: var(--surface-glass);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-subtle);
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+              border-color 0.35s ease,
+              box-shadow 0.35s ease;
+}
+
+.glass-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(0, 229, 255, 0.35);
+  box-shadow:
+    0 20px 40px -20px rgba(0, 0, 0, 0.85),
+    0 0 28px -8px rgba(0, 229, 255, 0.22);
+}
+
+/* Neon Primary Button */
+.btn-neon-primary {
+  position: relative;
+  background: linear-gradient(135deg, #00e5ff 0%, #3b82f6 50%, #9333ea 100%);
+  background-size: 180% 180%;
+  color: #ffffff;
+  transition: background-position 0.4s ease, box-shadow 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 0 24px -6px rgba(0, 229, 255, 0.55);
+}
+
+.btn-neon-primary:hover {
+  background-position: 100% 50%;
+  box-shadow: 0 0 32px -4px rgba(0, 229, 255, 0.7), 0 0 18px -4px rgba(168, 85, 247, 0.5);
+  transform: translateY(-1px);
+}
+
+.btn-neon-primary:active {
+  transform: translateY(0);
+}
+
+/* Secondary Ghost Button */
+.btn-cyber-ghost {
+  background: rgba(15, 23, 42, 0.65);
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  transition: border-color 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.btn-cyber-ghost:hover {
+  background: rgba(0, 229, 255, 0.08);
+  border-color: rgba(0, 229, 255, 0.55);
+  box-shadow: 0 0 20px -6px rgba(0, 229, 255, 0.35);
+  transform: translateY(-1px);
+}
+
+/* Active Nav Link Indicator */
+.nav-link {
+  position: relative;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #00e5ff, #a855f7);
+  border-radius: 9999px;
+  transition: width 0.25s ease;
+}
+
+.nav-link:hover::after,
+.nav-link.is-active::after {
+  width: 100%;
+}
+
+/* Project Card Image Placeholder Hover Zoom */
+.project-media-wrapper .project-mockup {
+  transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.project-card:hover .project-media-wrapper .project-mockup {
+  transform: scale(1.04);
+}
+
+/* Pulse status dot */
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(0, 229, 255, 0.65);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 8px rgba(0, 229, 255, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(0, 229, 255, 0);
+  }
+}
+
+.status-dot {
+  animation: pulse-ring 2.2s infinite;
+}
+
+/* Modal Backdrop & Transition */
+.modal-backdrop {
+  background: rgba(3, 5, 10, 0.82);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* Focus-visible outlines for keyboard accessibility */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--neon-blue);
+  outline-offset: 2px;
+}
+
+/* Respect Reduced Motion Preferences */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .status-dot {
+    animation: none;
+  }
+
+  .glass-card,
+  .btn-neon-primary,
+  .btn-cyber-ghost,
+  .project-media-wrapper .project-mockup {
+    transition: none;
+  }
+}
+
